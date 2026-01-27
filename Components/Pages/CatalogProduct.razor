@@ -1,0 +1,318 @@
+@page "/catalog/{CategoryId:int}"
+@using System.Net.Http.Json
+@inherits LayoutComponentBase
+@layout ProjectOne.Components.Layout.MinimalLayout
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="landing">
+
+    <!-- TOP NAV -->
+    <header class="topnav">
+        <div class="container-xl topnav-inner">
+            <a class="brand" href="/product">
+                <span class="brand-dot"></span>
+                <span class="brand-text">CompanyNameOrLogo</span>
+            </a>
+
+            <nav class="navlinks d-none d-md-flex">
+                <a href="/product#home">Home</a>
+                <a href="/product#products">Featured</a>
+                <a href="/catalog" class="active">Catalog</a>
+                <a href="/product#contact">Contact</a>
+            </nav>
+
+            <button class="btn btn-outline-light d-md-none ms-auto" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-light" href="/product#home" data-bs-dismiss="offcanvas">Home</a>
+                <a class="btn btn-outline-light" href="/product#products" data-bs-dismiss="offcanvas">Featured</a>
+                <a class="btn btn-outline-light" href="/catalog" data-bs-dismiss="offcanvas">Catalog</a>
+                <a class="btn btn-success" href="/product#contact" data-bs-dismiss="offcanvas">CONTACT</a>
+            </div>
+        </div>
+    </div>
+
+    @* <!-- HERO (mini) -->
+    <section class="hero hero-mini">
+        <div class="container-xl hero-inner">
+            <div class="hero-copy">
+                <div class="hero-kicker">Catalog</div>
+                <h1 class="hero-title">@((category is null) ? "PRODUCTS" : category.Name.ToUpper())</h1>
+                <p class="hero-subtitle">
+                    @((category is null)
+                        ? "Browse products in this category."
+                        : (!string.IsNullOrWhiteSpace(category.Description) ? category.Description : "Browse products in this category."))
+                </p>
+
+                <div class="hero-badges">
+                    <span class="badge-pill">Clean</span>
+                    <span class="badge-pill">Fast</span>
+                    <span class="badge-pill">Medical-grade</span>
+                </div>
+
+                <div class="mt-3">
+                    <a class="btn btn-outline-light btn-min" href="/catalog">← Back to categories</a>
+                </div>
+            </div>
+        </div>
+    </section> *@
+
+    <!-- LIST -->
+    <section class="cards">
+        <div class="container-xl">
+
+            <div class="section-head section-head-row">
+                <div>
+                    <div class="admin-kicker">Catalog</div>
+
+                    <h2 class="section-title">
+                        @((category is null) ? "Products" : category.Name)
+                    </h2>
+
+                    <div class="section-desc">
+                        @((category is null)
+                            ? "Browse products in this category."
+                            : (!string.IsNullOrWhiteSpace(category.Description)
+                                ? category.Description
+                                : "Browse products in this category."))
+                    </div>
+
+                    <div class="mt-2">
+                        <a class="btn btn-outline-light btn-sm btn-min" href="/catalog">
+                            ← Back to categories
+                        </a>
+                    </div>
+                </div>
+
+                <div class="catalog-tools">
+                    <input class="form-control input-min catalog-search"
+                        placeholder="Search products..."
+                        @bind="search"
+                        @bind:event="oninput" />
+                </div>
+            </div>
+
+
+            @if (!string.IsNullOrWhiteSpace(error))
+            {
+                <div class="alert alert-danger my-3">@error</div>
+            }
+
+            @if (loading && products.Count == 0)
+            {
+                <div class="muted">Loading products...</div>
+            }
+            else if (filteredProducts.Count == 0)
+            {
+                <div class="muted">No products found in this category.</div>
+            }
+            else
+            {
+                <div class="row g-4">
+                    @foreach (var p in filteredProducts)
+                    {
+                        <div class="col-12 col-md-4">
+                            <div class="cat-card catalog-card">
+
+                                <div class="cat-img">
+                                    <img src="@GetProductCoverSrc(p)" alt="@p.Name" />
+                                </div>
+
+                                <div class="cat-body">
+                                    <div class="cat-title">@p.Name</div>
+
+                                    <div class="cat-meta">
+                                        @p.Price.ToString("N2")
+                                    </div>
+
+                                    <div class="cat-text">
+                                        @(!string.IsNullOrWhiteSpace(p.Description)
+                                            ? p.Description
+                                            : "No description provided.")
+                                    </div>
+
+                                    <div class="cat-actions">
+                                        <a class="cat-link" href="/product#contact">Contact →</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- FOOTER (reuse theme) -->
+    <footer class="footer">
+        <div class="container-xl">
+            <div class="footer-top">
+                <div class="footer-brandblock">
+                    <a class="footer-brand" href="/product#home">
+                        <span class="brand-dot"></span>
+                        <span class="footer-brand-text">CompanyName</span>
+                    </a>
+
+                    <p class="footer-desc">
+                        Medical catalog with clear specs, documents, and fast support.
+                    </p>
+
+                    <div class="footer-badges">
+                        <span class="footer-pill">ISO</span>
+                        <span class="footer-pill">CE</span>
+                        <span class="footer-pill">Sterile</span>
+                    </div>
+                </div>
+
+                <div class="footer-linksblock">
+                    <div class="footer-title">Quick links</div>
+                    <div class="footer-links">
+                        <a href="/product#home">Home</a>
+                        <a href="/product#products">Featured</a>
+                        <a href="/catalog">Catalog</a>
+                        <a href="/product#contact">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-contactcard">
+                    <div class="footer-card-title">Contact Sales</div>
+
+                    <div class="footer-contactlist">
+                        <div class="footer-row">
+                            <span class="footer-ico">☎️</span>
+                            <a href="tel:+66900000000">+66 90 000 0000</a>
+                        </div>
+                        <div class="footer-row">
+                            <span class="footer-ico">✉️</span>
+                            <a href="mailto:sales@company.com">sales@company.com</a>
+                        </div>
+                        <div class="footer-row">
+                            <span class="footer-ico">📍</span>
+                            <span>Samut Sakhon, Thailand</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© @DateTime.Now.Year CompanyName. All rights reserved.</div>
+                <div class="footer-mini">
+                    <a href="/catalog">Back to categories ↑</a>
+                    <span class="footer-sep">•</span>
+                    <a href="/product#contact">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+@code {
+    [Parameter] public int CategoryId { get; set; }
+
+    private bool loading;
+    private string? error;
+
+    private string search = "";
+
+    private CategoryVm? category;
+    private readonly List<ProductVm> products = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadAsync();
+    }
+
+    private HttpClient CreateClient()
+        => HttpClientFactory.CreateClient("Backend");
+
+    private async Task LoadAsync()
+    {
+        loading = true;
+        error = null;
+        StateHasChanged();
+
+        try
+        {
+            var client = CreateClient();
+
+            // โหลด category (เพื่อโชว์ชื่อบน header)
+            var cats = await client.GetFromJsonAsync<List<CategoryVm>>("api/catalog/categories") ?? new();
+            category = cats.FirstOrDefault(x => x.Id == CategoryId);
+
+            // โหลด products ของ category นี้
+            // ✅ ถ้าคุณใช้ API แบบ route: /categories/{id}/products
+            var data = await client.GetFromJsonAsync<List<ProductVm>>($"api/catalog/categories/{CategoryId}/products?onlyActive=true");
+            products.Clear();
+            if (data is not null) products.AddRange(data);
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+        finally
+        {
+            loading = false;
+            StateHasChanged();
+        }
+    }
+
+    private List<ProductVm> filteredProducts
+        => products
+            .Where(x =>
+                string.IsNullOrWhiteSpace(search) ||
+                (x.Name?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (x.Description?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false))
+            .OrderBy(x => x.Name)
+            .ToList();
+
+    private string GetProductCoverSrc(ProductVm p)
+    {
+        // ✅ ถ้า API ส่ง cover มาด้วย (แนะนำ)
+        if (!string.IsNullOrWhiteSpace(p.CoverBase64))
+            return $"data:{p.CoverContentType};base64,{p.CoverBase64}";
+
+        // fallback
+        return "/images/product-placeholder.jpg";
+    }
+
+    private sealed class CategoryVm
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public string? Type { get; set; }
+        public string? Description { get; set; }
+        public bool IsActive { get; set; }
+        public int SortOrder { get; set; }
+    }
+
+    // ✅ รองรับ “product+cover” (ถ้าคุณเพิ่ม API cover แล้ว)
+    private sealed class ProductVm
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public int? CategoryId { get; set; }
+        public string? CategoryName { get; set; }
+        public string? Description { get; set; }
+        public decimal Price { get; set; }
+        public bool IsActive { get; set; }
+
+        // cover image (optional)
+        public string? CoverBase64 { get; set; }
+        public string? CoverContentType { get; set; }
+    }
+}

@@ -1,0 +1,640 @@
+@page "/admin/catalog/categories"
+@using System.Net.Http.Json
+@inherits LayoutComponentBase
+@layout ProjectOne.Components.Layout.MinimalLayout
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="landing admin-surface">
+
+    <header class="topnav">
+        <div class="container-xl topnav-inner">
+            <a class="brand" href="/product">
+                <span class="brand-dot"></span>
+                <span class="brand-text">CompanyNameOrLogo</span>
+            </a>
+
+            <nav class="navlinks d-none d-md-flex">
+                <a href="/product#home">Home</a>
+                <a href="/catalog">Catalog</a>
+                <a href="/admin/catalog/categories" class="active">Admin</a>
+            </nav>
+
+            <button class="btn btn-outline-light d-md-none ms-auto" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <div class="container-xl admin-wrap">
+
+        <div class="admin-head">
+            <div>
+                <div class="admin-kicker">Admin</div>
+                <h2 class="admin-title">Category Management</h2>
+                <div class="admin-sub">Create, update, activate/deactivate, and manage category images.</div>
+            </div>
+
+            <div class="admin-actions">
+                <button class="btn btn-light btn-min" @onclick="OpenCreate">+ New Category</button>
+                <button class="btn btn-outline-light btn-min" @onclick="LoadAsync" disabled="@loading">
+                    @(loading ? "Loading..." : "Refresh")
+                </button>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(error))
+        {
+            <div class="alert alert-danger my-3">@error</div>
+        }
+
+        <div class="admin-panel">
+            <div class="table-wrap">
+                <table class="table table-dark table-hover align-middle mb-0 admin-table">
+                    <thead>
+                        <tr>
+                            <th style="width:80px;">#</th>
+                            <th style="width:110px;">Cover</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th style="width:120px;">Active</th>
+                            <th style="width:110px;">Sort</th>
+                            <th style="width:260px;" class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (items.Count == 0 && !loading)
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center muted py-4">No categories found.</td>
+                            </tr>
+                        }
+
+                        @foreach (var c in items.OrderBy(x => x.SortOrder).ThenBy(x => x.Name))
+                        {
+                            <tr>
+                                <td class="muted">@c.Id</td>
+
+                                <td>
+                                    <img class="thumb"
+                                         src="@GetCoverSrc(c.Id)"
+                                         alt="cover" />
+                                </td>
+
+                                <td class="fw-semibold">@c.Name</td>
+                                <td class="muted">@c.Type</td>
+                                <td class="muted">@c.Description</td>
+
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox"
+                                               checked="@c.IsActive"
+                                               @onchange="(e) => ToggleActiveAsync(c, e)" />
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+
+                                <td class="muted">@c.SortOrder</td>
+
+                                <td class="text-end">
+                                    <button class="btn btn-outline-light btn-sm btn-min me-2" @onclick="() => OpenEdit(c)">Edit</button>
+                                    <button class="btn btn-outline-info btn-sm btn-min me-2" @onclick="() => OpenUpload(c)">Upload image</button>
+                                    <button class="btn btn-outline-danger btn-sm btn-min" @onclick="() => AskDelete(c)">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@* ===== MODAL: CREATE/EDIT ===== *@
+@if (modalOpen)
+{
+    <div class="modal-backdrop-min" @onclick="CloseModal"></div>
+
+    <div class="modal-min" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <div class="modal-head">
+                <div>
+                    <div class="modal-title">@((editingId == 0) ? "New Category" : "Edit Category")</div>
+                    <div class="modal-sub muted">Use short, consistent naming.</div>
+                </div>
+                <button class="btn btn-outline-light btn-sm btn-min" @onclick="CloseModal">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Name</label>
+                        <input class="form-control input-min" @bind="form.Name" />
+                        @if (!string.IsNullOrWhiteSpace(formErrorName))
+                        {
+                            <div class="text-danger small mt-1">@formErrorName</div>
+                        }
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Type</label>
+                        <input class="form-control input-min" @bind="form.Type" placeholder="e.g., Consumables / Devices" />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control input-min" rows="3" @bind="form.Description"></textarea>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">Sort order</label>
+                        <input class="form-control input-min" type="number" @bind="form.SortOrder" />
+                    </div>
+
+                    <div class="col-6 d-flex align-items-end">
+                        <label class="chk">
+                            <input type="checkbox" @bind="form.IsActive" />
+                            <span>Active</span>
+                        </label>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(formError))
+                {
+                    <div class="alert alert-danger mt-3 mb-0">@formError</div>
+                }
+            </div>
+
+            <div class="modal-foot">
+                <button class="btn btn-outline-light btn-min" @onclick="CloseModal" disabled="@saving">Cancel</button>
+                <button class="btn btn-light btn-min" @onclick="SaveAsync" disabled="@saving">
+                    @(saving ? "Saving..." : "Save")
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@* ===== MODAL: UPLOAD IMAGE ===== *@
+@if (uploadOpen && uploadTarget is not null)
+{
+    <div class="modal-backdrop-min" @onclick="CloseUpload"></div>
+
+    <div class="modal-min" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <div class="modal-head">
+                <div>
+                    <div class="modal-title">Upload Image</div>
+                    <div class="modal-sub muted">Owner: Category / @uploadTarget.Name</div>
+                </div>
+                <button class="btn btn-outline-light btn-sm btn-min" @onclick="CloseUpload">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Role</label>
+                        <select class="form-select input-min" @bind="uploadRole">
+                            <option value="cover">cover</option>
+                            <option value="gallery">gallery</option>
+                            <option value="thumbnail">thumbnail</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Image file</label>
+                        <InputFile OnChange="OnFileSelected" />
+                        @if (!string.IsNullOrWhiteSpace(uploadFileName))
+                        {
+                            <div class="muted small mt-2">Selected: @uploadFileName</div>
+                        }
+                    </div>
+
+                    @if (!string.IsNullOrWhiteSpace(uploadError))
+                    {
+                        <div class="col-12">
+                            <div class="alert alert-danger mb-0">@uploadError</div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="modal-foot">
+                <button class="btn btn-outline-light btn-min" @onclick="CloseUpload" disabled="@uploading">Cancel</button>
+                <button class="btn btn-light btn-min" @onclick="UploadAsync" disabled="@uploading">
+                    @(uploading ? "Uploading..." : "Upload")
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@* ===== MODAL: DELETE ===== *@
+@if (deleteOpen && deleteTarget is not null)
+{
+    <div class="modal-backdrop-min"></div>
+    <div class="modal-min" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <div class="modal-head">
+                <div class="modal-title">Delete category</div>
+                <button class="btn btn-outline-light btn-sm btn-min" @onclick="CloseDelete">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="muted">Are you sure you want to delete:</div>
+                <div class="fw-semibold mt-1">@deleteTarget.Name</div>
+                <div class="muted small mt-2">This action cannot be undone.</div>
+
+                @if (!string.IsNullOrWhiteSpace(deleteError))
+                {
+                    <div class="alert alert-danger mt-3 mb-0">@deleteError</div>
+                }
+            </div>
+
+            <div class="modal-foot">
+                <button class="btn btn-outline-light btn-min" @onclick="CloseDelete" disabled="@deleting">Cancel</button>
+                <button class="btn btn-outline-danger btn-min" @onclick="DeleteAsync" disabled="@deleting">
+                    @(deleting ? "Deleting..." : "Delete")
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private readonly List<CategoryVm> items = new();
+    private readonly Dictionary<int, List<MediaVm>> mediaByCategoryId = new();
+
+    private bool loading;
+    private string? error;
+
+    // modal state
+    private bool modalOpen;
+    private int editingId = 0;
+    private bool saving;
+    private string? formError;
+    private string? formErrorName;
+    private CategoryForm form = new();
+
+    // delete state
+    private bool deleteOpen;
+    private bool deleting;
+    private string? deleteError;
+    private CategoryVm? deleteTarget;
+
+    // upload state
+    private bool uploadOpen;
+    private bool uploading;
+    private string? uploadError;
+    private CategoryVm? uploadTarget;
+    private string uploadRole = "cover";
+    private IBrowserFile? uploadFile;
+    private string? uploadFileName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAsync();
+    }
+
+    private HttpClient CreateClient()
+        => HttpClientFactory.CreateClient("Backend");
+
+    private async Task LoadAsync()
+    {
+        loading = true;
+        error = null;
+        StateHasChanged();
+
+        try
+        {
+            var client = CreateClient();
+            var data = await client.GetFromJsonAsync<List<CategoryVm>>("api/catalog/categories");
+
+            items.Clear();
+            if (data is not null) items.AddRange(data);
+
+            // preload media
+            mediaByCategoryId.Clear();
+            foreach (var c in items)
+            {
+                try
+                {
+                    var m = await client.GetFromJsonAsync<List<MediaVm>>($"api/catalog/media/Category/{c.Id}");
+                    mediaByCategoryId[c.Id] = m ?? new List<MediaVm>();
+                }
+                catch
+                {
+                    mediaByCategoryId[c.Id] = new List<MediaVm>();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+        finally
+        {
+            loading = false;
+            StateHasChanged();
+        }
+    }
+
+    private string GetCoverSrc(int categoryId)
+    {
+        if (mediaByCategoryId.TryGetValue(categoryId, out var list) && list.Count > 0)
+        {
+            var cover = list.FirstOrDefault(x => string.Equals(x.Role, "cover", StringComparison.OrdinalIgnoreCase))
+                       ?? list.FirstOrDefault();
+
+            if (cover is not null && !string.IsNullOrWhiteSpace(cover.Base64))
+                return $"data:{cover.ContentType};base64,{cover.Base64}";
+        }
+
+        return "/images/cat-placeholder.jpg";
+    }
+
+    private void OpenCreate()
+    {
+        editingId = 0;
+        form = new CategoryForm { IsActive = true, SortOrder = 0 };
+        formError = null;
+        formErrorName = null;
+        modalOpen = true;
+    }
+
+    private void OpenEdit(CategoryVm c)
+    {
+        editingId = c.Id;
+        form = new CategoryForm
+        {
+            Name = c.Name,
+            Type = c.Type,
+            Description = c.Description,
+            IsActive = c.IsActive,
+            SortOrder = c.SortOrder
+        };
+        formError = null;
+        formErrorName = null;
+        modalOpen = true;
+    }
+
+    private void CloseModal()
+    {
+        if (saving) return;
+        modalOpen = false;
+    }
+
+    private async Task SaveAsync()
+    {
+        formError = null;
+        formErrorName = null;
+
+        if (string.IsNullOrWhiteSpace(form.Name))
+        {
+            formErrorName = "Name is required.";
+            return;
+        }
+
+        saving = true;
+        StateHasChanged();
+
+        try
+        {
+            var client = CreateClient();
+
+            var payload = new
+            {
+                name = form.Name.Trim(),
+                type = string.IsNullOrWhiteSpace(form.Type) ? null : form.Type.Trim(),
+                description = string.IsNullOrWhiteSpace(form.Description) ? null : form.Description.Trim(),
+                isActive = form.IsActive,
+                sortOrder = form.SortOrder
+            };
+
+            if (editingId == 0)
+            {
+                var res = await client.PostAsJsonAsync("api/catalog/categories", payload);
+                if (!res.IsSuccessStatusCode)
+                {
+                    formError = await res.Content.ReadAsStringAsync();
+                    return;
+                }
+            }
+            else
+            {
+                var res = await client.PutAsJsonAsync($"api/catalog/categories/{editingId}", payload);
+                if (!res.IsSuccessStatusCode)
+                {
+                    formError = await res.Content.ReadAsStringAsync();
+                    return;
+                }
+            }
+
+            modalOpen = false;
+            await LoadAsync();
+        }
+        catch (Exception ex)
+        {
+            formError = ex.Message;
+        }
+        finally
+        {
+            saving = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task ToggleActiveAsync(CategoryVm c, ChangeEventArgs e)
+    {
+        try
+        {
+            var newValue = (bool)(e.Value ?? false);
+
+            var old = c.IsActive;
+            c.IsActive = newValue;
+            StateHasChanged();
+
+            var client = CreateClient();
+
+            var payload = new
+            {
+                name = c.Name,
+                type = c.Type,
+                description = c.Description,
+                isActive = c.IsActive,
+                sortOrder = c.SortOrder
+            };
+
+            var res = await client.PutAsJsonAsync($"api/catalog/categories/{c.Id}", payload);
+            if (!res.IsSuccessStatusCode)
+            {
+                c.IsActive = old;
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            // ignore
+        }
+    }
+
+    private void AskDelete(CategoryVm c)
+    {
+        deleteTarget = c;
+        deleteError = null;
+        deleteOpen = true;
+    }
+
+    private void CloseDelete()
+    {
+        if (deleting) return;
+        deleteOpen = false;
+        deleteTarget = null;
+        deleteError = null;
+    }
+
+    private async Task DeleteAsync()
+    {
+        if (deleteTarget is null) return;
+
+        deleting = true;
+        deleteError = null;
+        StateHasChanged();
+
+        try
+        {
+            var client = CreateClient();
+            var res = await client.DeleteAsync($"api/catalog/categories/{deleteTarget.Id}");
+            if (!res.IsSuccessStatusCode)
+            {
+                deleteError = await res.Content.ReadAsStringAsync();
+                return;
+            }
+
+            deleteOpen = false;
+            deleteTarget = null;
+            await LoadAsync();
+        }
+        catch (Exception ex)
+        {
+            deleteError = ex.Message;
+        }
+        finally
+        {
+            deleting = false;
+            StateHasChanged();
+        }
+    }
+
+    private void OpenUpload(CategoryVm c)
+    {
+        uploadTarget = c;
+        uploadRole = "cover";
+        uploadFile = null;
+        uploadFileName = null;
+        uploadError = null;
+        uploadOpen = true;
+    }
+
+    private void CloseUpload()
+    {
+        if (uploading) return;
+        uploadOpen = false;
+        uploadTarget = null;
+        uploadError = null;
+        uploadFile = null;
+        uploadFileName = null;
+    }
+
+    private async Task OnFileSelected(InputFileChangeEventArgs e)
+    {
+        uploadFile = e.File;
+        uploadFileName = e.File?.Name;
+        await Task.CompletedTask;
+    }
+
+    private async Task UploadAsync()
+    {
+        if (uploadTarget is null)
+            return;
+
+        if (uploadFile is null)
+        {
+            uploadError = "Please select a file.";
+            return;
+        }
+
+        uploading = true;
+        uploadError = null;
+        StateHasChanged();
+
+        try
+        {
+            var client = CreateClient();
+
+            using var form = new MultipartFormDataContent();
+
+            // must match MediaUploadRequest fields
+            form.Add(new StringContent("Category"), "OwnerType");
+            form.Add(new StringContent(uploadTarget.Id.ToString()), "OwnerId");
+            form.Add(new StringContent(uploadRole), "Role");
+
+            // file
+            var stream = uploadFile.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
+            var fileContent = new StreamContent(stream);
+            fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(uploadFile.ContentType);
+
+            form.Add(fileContent, "File", uploadFile.Name);
+
+            var res = await client.PostAsync("api/catalog/media", form);
+            if (!res.IsSuccessStatusCode)
+            {
+                uploadError = await res.Content.ReadAsStringAsync();
+                return;
+            }
+
+            uploadOpen = false;
+            await LoadAsync();
+        }
+        catch (Exception ex)
+        {
+            uploadError = ex.Message;
+        }
+        finally
+        {
+            uploading = false;
+            StateHasChanged();
+        }
+    }
+
+    private sealed class CategoryVm
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public string? Type { get; set; }
+        public string? Description { get; set; }
+        public bool IsActive { get; set; }
+        public int SortOrder { get; set; }
+    }
+
+    private sealed class MediaVm
+    {
+        public int Id { get; set; }
+        public string Role { get; set; } = "gallery";
+        public string ContentType { get; set; } = "image/jpeg";
+        public string? FileName { get; set; }
+        public string Base64 { get; set; } = "";
+    }
+
+    private sealed class CategoryForm
+    {
+        public string Name { get; set; } = "";
+        public string? Type { get; set; }
+        public string? Description { get; set; }
+        public bool IsActive { get; set; } = true;
+        public int SortOrder { get; set; } = 0;
+    }
+}

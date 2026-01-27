@@ -1,0 +1,472 @@
+:root{
+    --blue-900:#0b2b3a;
+    --blue-800:#0f3d52;
+    --blue-600:#1e88a8;
+  
+    --green-600:#2bb673;
+    --green-500:#31c27c;
+  
+    --bg:#0b2b3a;
+    --card:#ffffff;
+    --muted:rgba(255,255,255,.75);
+  }
+  
+  /* base */
+  .landing{ background:#0b2b3a; color:#fff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+  .container-xl{ max-width: 1180px; }
+  
+  /* top nav */
+  .topnav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  
+    /* ⭐ ใช้ gradient เดียวกับ promo */
+    background: linear-gradient(
+      135deg,
+      rgba(30,136,168,.92),
+      rgba(43,182,115,.92)
+    );
+  
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,.25);
+  }
+  
+  .topnav-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:16px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:#fff; font-weight:800; letter-spacing:.5px;}
+  .brand-dot{ width:10px; height:10px; border-radius:999px; background: linear-gradient(135deg, var(--blue-600), var(--green-500)); }
+  .navlinks a{ color:rgba(255,255,255,.9); text-decoration:none; margin:0 10px; font-weight:600; }
+  .navlinks a:hover{ color:#fff; }
+  .btn-cta{ background: linear-gradient(135deg, var(--blue-600), var(--green-500)); border:0; color:#fff; font-weight:700; }
+  
+  /* hero */
+  .hero{
+    position: relative;
+    min-height: 280px;            /* ปรับความกว้างรูปภาพด้านบน */
+    display: flex;
+    align-items: center;
+  
+    /* ⭐ background image */
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(11,43,58,.55),
+        rgba(11,43,58,.75)
+      ),
+      url('/images/hero-bg.jpg');
+  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  
+  .hero-inner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 2px 0 64px;   /* ⭐ ลดด้านบนลง */
+  }
+  .hero-copy{ max-width: 560px; }
+  .hero-kicker{ color: var(--muted); font-weight:700; letter-spacing: .12em; text-transform:uppercase; font-size:.85rem; }
+  .hero-title{ font-size: clamp(2.6rem, 5vw, 4rem); margin:.4rem 0; font-weight:900; letter-spacing:.02em; }
+  .hero-subtitle{ color: var(--muted); font-size:1.05rem; line-height:1.6; }
+  .hero-actions{ display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+  .hero-badges{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
+  .badge-pill{
+    border:1px solid rgba(255,255,255,.18);
+    padding:6px 10px;
+    border-radius:999px;
+    color:rgba(255,255,255,.9);
+    font-weight:600;
+    font-size:.9rem;
+  }
+  .hero-art img{
+    width: 430px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    background: rgba(255,255,255,.06);
+    padding: 10px;
+  }
+  
+  /* promo strip */
+  .promo{
+    background: linear-gradient(135deg, rgba(30,136,168,.95), rgba(43,182,115,.95));
+    padding: 5px 0;
+  
+    margin-top: -50px;   /* ⭐ ดันแถบขึ้น */
+    position: relative;
+    z-index: 3;
+  }
+  .promo-inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .promo-title{ font-weight:900; letter-spacing:.06em; }
+  .promo-text{ opacity:.92; }
+  .promo-btn{ font-weight:800; }
+  
+  /* cards */
+  .cards{ padding: 14px 0 20px; /* ขยับส่วนของกล่องขึ้นลง feature */ background: linear-gradient(180deg, rgba(255,255,255,.03), transparent); } 
+  .section-head{ margin-bottom: 22px; }
+  .section-title{ font-weight:900; margin:0; }
+  .section-desc{ color:rgba(255,255,255,.75); }
+  
+  .cat-card{
+    background: var(--card);
+    color:#0d2230;
+    border-radius: 18px;
+    overflow:hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,.25);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .cat-img{ height: 170px; background:#f1f5f9; }
+  .cat-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .cat-body{ padding: 16px;  background:#f8fafc;display: flex;
+    flex-direction: column;
+    flex: 1; }
+  .cat-title{ font-weight:900; font-size:1.2rem; }
+  .cat-text{ margin-top:6px; color: rgba(13,34,48,.75); }
+  .cat-link{ display:inline-block;  text-decoration:none; font-weight:800; color: var(--blue-600); margin-top: auto;          /* ✅ สำคัญ */
+    padding-top: 10px;         /* กันชนเล็กน้อย */ }
+  .cat-link:hover{ color: var(--green-600); }
+  
+  /* services */
+  .services{
+    padding: 52px 0;
+    background: rgba(0,0,0,.22);
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .services-head{ text-align:center; margin-bottom: 26px; }
+  .services-title{ font-weight:900; letter-spacing:.08em; }
+  .services-desc{ color: rgba(255,255,255,.75); }
+  
+  .svc{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 18px;
+    padding: 18px;
+    height:100%;
+  }
+  .svc-ico{ font-size: 28px; }
+  .svc-title{ margin-top:10px; font-weight:900; }
+  .svc-text{ color: rgba(255,255,255,.78); margin-top:6px; line-height:1.6; }
+  
+  /* contact */
+  .contact{ padding: 54px 0 64px; }
+  .contact-box{
+    background: #ffffff;
+    color:#0d2230;
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.25);
+  }
+  .contact-title{ font-weight:900; margin:0; }
+  .contact-desc{ color: rgba(13,34,48,.7); }
+  
+  /* footer */
+  .footer{ padding: 18px 0; color: rgba(255,255,255,.75); }
+  .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .footer-links a{ color: rgba(255,255,255,.75); text-decoration:none; margin-left:12px; }
+  .footer-links a:hover{ color:#fff; }
+
+
+
+
+  .container-hero {
+    max-width: 1400px;   /* จาก 1180 → 1400 */
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+
+  /* ✅ Override bootstrap container-xl ให้กว้างขึ้นและ padding น้อยลง */
+.landing .container-xl{
+    max-width: 1500px !important;   /* จากเดิม 1180 → 1500 */
+    padding-left: 18px !important;  /* ชิดขึ้น */
+    padding-right: 18px !important; /* ชิดขึ้น */
+  }
+  
+  /* ✅ hero ใช้ container-hero อยู่แล้ว ให้ชิดขึ้นอีกนิด */
+  .landing .container-hero{
+    max-width: 1500px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  
+
+  /* ===== LUX FOOTER (Match teal + gradient) ===== */
+.footer{
+    position: relative;
+    padding: 46px 0 18px;
+    color: rgba(255,255,255,.78);
+  
+    /* เข้าธีมกับหน้า: deep teal + glass */
+    background:
+      radial-gradient(1200px 420px at 20% -10%, rgba(30,136,168,.25), transparent 60%),
+      radial-gradient(900px 360px at 90% 0%, rgba(49,194,124,.18), transparent 55%),
+      linear-gradient(180deg, rgba(11,43,58,.92), rgba(9,34,46,.96));
+  
+    border-top: 1px solid rgba(255,255,255,.10);
+    overflow: hidden;
+  }
+  
+  /* เส้นเรืองแสงบาง ๆ ให้ดู luxury */
+  .footer::before{
+    content:"";
+    position:absolute;
+    left:0; right:0; top:0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(30,136,168,.9), rgba(49,194,124,.9), transparent);
+    opacity:.45;
+  }
+  
+  /* layout */
+  .footer-top{
+    display:grid;
+    grid-template-columns: 1.2fr .8fr 1.15fr;
+    gap: 26px;
+    align-items: start;
+  }
+  
+  .footer-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+  
+  .footer-brand-text{
+    font-weight: 900;
+    letter-spacing: .5px;
+    color:#fff;
+  }
+  
+  .footer-desc{
+    margin: 10px 0 14px;
+    line-height: 1.7;
+    max-width: 520px;
+    color: rgba(255,255,255,.72);
+  }
+  
+  .footer-badges{ display:flex; flex-wrap:wrap; gap: 8px; }
+  
+  .footer-pill{
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.06);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: rgba(255,255,255,.88);
+  }
+  
+  /* links */
+  .footer-title{
+    font-weight: 800;
+    color:#fff;
+    margin-bottom: 12px;
+    letter-spacing:.2px;
+  }
+  
+  .footer-links{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footer a{
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+  }
+  
+  .footer a:hover{
+    color:#fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  
+  /* luxury contact card */
+  .footer-contactcard{
+    border-radius: 18px;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,.12);
+  
+    /* glass + gradient accent */
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.04)),
+      radial-gradient(600px 240px at 20% 0%, rgba(30,136,168,.18), transparent 60%),
+      radial-gradient(600px 240px at 90% 0%, rgba(49,194,124,.14), transparent 60%);
+  
+    box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    backdrop-filter: blur(10px);
+  }
+  
+  .footer-card-title{
+    font-weight: 900;
+    color:#fff;
+    letter-spacing:.2px;
+  }
+  
+  .footer-card-sub{
+    margin-top: 6px;
+    color: rgba(255,255,255,.72);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .footer-contactlist{
+    margin-top: 12px;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footer-row{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  
+  .footer-ico{ width: 22px; opacity:.95; }
+  
+  /* buttons: premium CTA */
+  .footer-actions{
+    margin-top: 14px;
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-btn-primary{
+    background: linear-gradient(135deg, var(--blue-600), var(--green-500));
+    border: 0;
+    color: #fff !important;
+    font-weight: 800;
+    padding: 9px 14px;
+    border-radius: 12px;
+    box-shadow: 0 14px 30px rgba(0,0,0,.25);
+  }
+  
+  .footer-btn-primary:hover{
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+  
+  .footer-btn-ghost{
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.18);
+    color: rgba(255,255,255,.9) !important;
+    font-weight: 800;
+    padding: 9px 14px;
+    border-radius: 12px;
+  }
+  
+  .footer-btn-ghost:hover{
+    background: rgba(255,255,255,.12);
+  }
+  
+  /* micro text */
+  .footer-micro{
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(255,255,255,.62);
+  }
+  
+  /* bottom bar */
+  .footer-bottom{
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,.10);
+  
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+  }
+  
+  .footer-mini{ display:flex; align-items:center; gap: 10px; }
+  .footer-sep{ opacity:.5; }
+  
+  /* responsive */
+  @media (max-width: 992px){
+    .footer-top{ grid-template-columns: 1fr; gap: 18px; }
+    .footer-contactcard{ padding: 16px; }
+  }
+
+
+  /* ===== Catalog extras (minimal, same theme) ===== */
+.hero-mini{
+    min-height: 220px;
+  }
+  .section-head-row{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  
+  .catalog-tools{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .catalog-search{
+    width: 280px;
+    max-width: 100%;
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.20);
+    color:#fff;
+  }
+  .catalog-search::placeholder{ color: rgba(255,255,255,.65); }
+  .catalog-search:focus{
+    background: rgba(255,255,255,.12);
+    border-color: rgba(49,194,124,.45);
+    box-shadow: 0 0 0 .15rem rgba(49,194,124,.18);
+    color:#fff;
+  }
+  
+  .chk-dark{
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.06);
+    padding: 6px 10px;
+    border-radius: 999px;
+  }
+  
+  .navlinks a.active{
+    color:#fff;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    opacity: .95;
+  }
+  
+  /* make catalog cards feel clean */
+  .catalog-card{
+    border: 1px solid rgba(0,0,0,.05);
+    box-shadow: 0 12px 36px rgba(0,0,0,.20);
+  }
+  .cat-meta{
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(13,34,48,.55);
+  }
+  
+  .cat-actions{
+    margin-top: auto; /* keep link pinned bottom */
+    display:flex;
+    justify-content:flex-start;
+  }
+
+  
+  
+
+  

@@ -1,0 +1,329 @@
+@page "/catalog"
+@using System.Net.Http.Json
+@inherits LayoutComponentBase
+@layout ProjectOne.Components.Layout.MinimalLayout
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="landing">
+
+    <!-- TOP NAV -->
+    <header class="topnav">
+        <div class="container-xl topnav-inner">
+            <a class="brand" href="/product">
+                <span class="brand-dot"></span>
+                <span class="brand-text">CompanyNameOrLogo</span>
+            </a>
+
+            <nav class="navlinks d-none d-md-flex">
+                <a href="/product#home">Home</a>
+                <a href="/product#products">Featured</a>
+                <a href="/catalog" class="active">Catalog</a>
+                <a href="/product#contact">Contact</a>
+            </nav>
+
+            <button class="btn btn-outline-light d-md-none ms-auto" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-light" href="/product#home" data-bs-dismiss="offcanvas">Home</a>
+                <a class="btn btn-outline-light" href="/product#products" data-bs-dismiss="offcanvas">Featured</a>
+                <a class="btn btn-outline-light" href="/catalog" data-bs-dismiss="offcanvas">Catalog</a>
+                <a class="btn btn-success" href="/product#contact" data-bs-dismiss="offcanvas">REQUEST INFO</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO (mini) -->
+    <section class="hero hero-mini">
+        <div class="container-xl hero-inner">
+            <div class="hero-copy">
+                <div class="hero-kicker">Catalog</div>
+                <h1 class="hero-title">CATEGORIES</h1>
+                <p class="hero-subtitle">
+                    Browse categories, view details, and request product information.
+                </p>
+
+                <div class="hero-badges">
+                    <span class="badge-pill">Clean</span>
+                    <span class="badge-pill">Fast</span>
+                    <span class="badge-pill">Medical-grade</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIST -->
+    <section class="cards">
+        <div class="container-xl">
+
+            <div class="section-head section-head-row">
+                <div>
+                    <h2 class="section-title">All Categories</h2>
+                    <div class="section-desc">Search and filter active categories.</div>
+                </div>
+
+                <div class="catalog-tools">
+                    <input class="form-control input-min catalog-search"
+                           placeholder="Search categories..."
+                           @bind="search" @bind:event="oninput" />
+
+                    @* <label class="chk chk-dark">
+                        <input type="checkbox" @bind="activeOnly" />
+                        <span>Active only</span>
+                    </label>
+
+                    <button class="btn btn-outline-light btn-sm btn-min"
+                            @onclick="LoadAsync" disabled="@loading">
+                        @(loading ? "Loading..." : "Refresh")
+                    </button> *@
+                </div>
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(error))
+            {
+                <div class="alert alert-danger my-3">@error</div>
+            }
+
+            @if (loading && items.Count == 0)
+            {
+                <div class="muted">Loading categories...</div>
+            }
+            else if (filtered.Count == 0)
+            {
+                <div class="muted">No categories found.</div>
+            }
+            else
+            {
+                <div class="row g-4">
+                    @foreach (var c in filtered)
+                    {
+                        <div class="col-12 col-md-4">
+                            <div class="cat-card catalog-card">
+
+                                <div class="cat-img">
+                                    <img src="@GetImageSrc(c)" alt="@c.Name" />
+                                </div>
+
+                                <div class="cat-body">
+                                    <div class="cat-title">@c.Name</div>
+
+                                    @if (!string.IsNullOrWhiteSpace(c.Type))
+                                    {
+                                        <div class="cat-meta">@c.Type</div>
+                                    }
+
+                                    <div class="cat-text">
+                                        @(!string.IsNullOrWhiteSpace(c.Description)
+                                            ? c.Description
+                                            : "No description provided.")
+                                    </div>
+
+                                    <div class="cat-actions">
+                                        <a class="cat-link" href="@($"/catalog/{c.Id}")">Request info →</a>
+                                        @* ต่อไปคุณจะทำหน้า product list ต่อ category ก็เปลี่ยนเป็น /catalog/@c.Id ได้ *@
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- FOOTER (reuse theme) -->
+    <footer class="footer">
+        <div class="container-xl">
+            <div class="footer-top">
+                <div class="footer-brandblock">
+                    <a class="footer-brand" href="/product#home">
+                        <span class="brand-dot"></span>
+                        <span class="footer-brand-text">CompanyName</span>
+                    </a>
+
+                    <p class="footer-desc">
+                        Medical catalog with clear specs, documents, and fast support.
+                    </p>
+
+                    <div class="footer-badges">
+                        <span class="footer-pill">ISO</span>
+                        <span class="footer-pill">CE</span>
+                        <span class="footer-pill">Sterile</span>
+                    </div>
+                </div>
+
+                <div class="footer-linksblock">
+                    <div class="footer-title">Quick links</div>
+                    <div class="footer-links">
+                        <a href="/product#home">Home</a>
+                        <a href="/product#products">Featured</a>
+                        <a href="/catalog">Catalog</a>
+                        <a href="/product#contact">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-contactcard">
+                    <div class="footer-card-title">Contact Sales</div>
+
+                    <div class="footer-contactlist">
+                        <div class="footer-row">
+                            <span class="footer-ico">☎️</span>
+                            <a href="tel:+66900000000">+66 90 000 0000</a>
+                        </div>
+                        <div class="footer-row">
+                            <span class="footer-ico">✉️</span>
+                            <a href="mailto:sales@company.com">sales@company.com</a>
+                        </div>
+                        <div class="footer-row">
+                            <span class="footer-ico">📍</span>
+                            <span>Samut Sakhon, Thailand</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© @DateTime.Now.Year CompanyName. All rights reserved.</div>
+                <div class="footer-mini">
+                    <a href="/product#home">Back to top ↑</a>
+                    <span class="footer-sep">•</span>
+                    <a href="/product#contact">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+@code {
+    private readonly List<CategoryVm> items = new();
+    private readonly Dictionary<int, List<MediaVm>> mediaByCategoryId = new();
+
+    private bool loading;
+    private string? error;
+
+    private string search = "";
+    private bool activeOnly = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAsync();
+    }
+
+    private HttpClient CreateClient()
+        => HttpClientFactory.CreateClient("Backend");
+
+    private async Task LoadAsync()
+    {
+        loading = true;
+        error = null;
+        StateHasChanged();
+
+        try
+        {
+            var client = CreateClient();
+
+            var data = await client.GetFromJsonAsync<List<CategoryVm>>("api/catalog/categories");
+            items.Clear();
+            if (data is not null) items.AddRange(data);
+
+            // preload media for visible categories
+            mediaByCategoryId.Clear();
+
+            var targets = items
+                .Where(x => !activeOnly || x.IsActive)
+                .Where(x =>
+                    string.IsNullOrWhiteSpace(search) ||
+                    (x.Name?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (x.Description?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (x.Type?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false))
+                .ToList();
+
+            foreach (var c in targets)
+            {
+                try
+                {
+                    var m = await client.GetFromJsonAsync<List<MediaVm>>($"api/catalog/media/Category/{c.Id}");
+                    mediaByCategoryId[c.Id] = m ?? new List<MediaVm>();
+                }
+                catch
+                {
+                    mediaByCategoryId[c.Id] = new List<MediaVm>();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+        finally
+        {
+            loading = false;
+            StateHasChanged();
+        }
+    }
+
+    private List<CategoryVm> filtered
+        => items
+            .Where(x => !activeOnly || x.IsActive)
+            .Where(x =>
+                string.IsNullOrWhiteSpace(search) ||
+                (x.Name?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (x.Description?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (x.Type?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false))
+            .OrderBy(x => x.SortOrder)
+            .ThenBy(x => x.Name)
+            .ToList();
+
+    private string GetImageSrc(CategoryVm c)
+    {
+        // 1) media "cover" first
+        if (mediaByCategoryId.TryGetValue(c.Id, out var list) && list.Count > 0)
+        {
+            var cover = list.FirstOrDefault(x => string.Equals(x.Role, "cover", StringComparison.OrdinalIgnoreCase))
+                       ?? list.FirstOrDefault();
+
+            if (cover is not null && !string.IsNullOrWhiteSpace(cover.Base64))
+            {
+                return $"data:{cover.ContentType};base64,{cover.Base64}";
+            }
+        }
+
+        // 2) fallback
+        return "/images/cat-placeholder.jpg";
+    }
+
+    private sealed class CategoryVm
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public string? Type { get; set; }
+        public string? Description { get; set; }
+        public bool IsActive { get; set; }
+        public int SortOrder { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+    }
+
+    private sealed class MediaVm
+    {
+        public int Id { get; set; }
+        public string Role { get; set; } = "gallery";
+        public string ContentType { get; set; } = "image/jpeg";
+        public string? FileName { get; set; }
+        public string Base64 { get; set; } = "";
+    }
+}

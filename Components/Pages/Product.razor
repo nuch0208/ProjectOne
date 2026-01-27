@@ -1,0 +1,364 @@
+@page "/product"
+
+@inherits LayoutComponentBase
+@layout ProjectOne.Components.Layout.MinimalLayout
+@rendermode InteractiveServer
+
+
+    <div class="landing">
+
+        <!-- TOP NAV -->
+        <header class="topnav">
+        <div class="container-xl topnav-inner">
+            <a class="brand" href="/">
+                <span class="brand-dot"></span>
+                <span class="brand-text">CompanyNameOrLogo</span>
+            </a>
+
+            <!-- เมนูอยู่ซ้าย ถัดจากโลโก้ -->
+            <nav class="navlinks d-none d-md-flex">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- ปุ่มมือถือ ย้ายไปขวาสุด -->
+            <button class="btn btn-outline-light d-md-none ms-auto" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                ☰
+            </button>
+        </div>
+    </header>
+
+
+    <!-- MOBILE MENU -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-light" href="#home" data-bs-dismiss="offcanvas">Home</a>
+                <a class="btn btn-outline-light" href="#about" data-bs-dismiss="offcanvas">About</a>
+                <a class="btn btn-outline-light" href="#products" data-bs-dismiss="offcanvas">Products</a>
+                <a class="btn btn-outline-light" href="#services" data-bs-dismiss="offcanvas">Services</a>
+                <a class="btn btn-outline-light" href="#contact" data-bs-dismiss="offcanvas">Contact</a>
+                <a class="btn btn-success" href="#contact" data-bs-dismiss="offcanvas">REQUEST INFO</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+
+        <div class="container-xl hero-inner">
+            <div class="hero-copy">
+                <div class="hero-kicker">Medical Products</div>
+                <h1 class="hero-title">PERFECTION</h1>
+                <p class="hero-subtitle">
+                    Showcase medical products with clear images, specs, and documents.
+                </p>
+
+                @* <div class="hero-actions">
+                    <a class="btn btn-primary btn-lg" href="#products">Browse Products</a>
+                    <a class="btn btn-outline-light btn-lg" href="#contact">Contact Sales</a>
+                </div> *@
+
+                <div class="hero-badges">
+                    <span class="badge-pill">ISO / CE</span>
+                    <span class="badge-pill">Sterile options</span>
+                    <span class="badge-pill">Fast support</span>
+                </div>
+            </div>
+
+            @* <div class="hero-art d-none d-lg-block">
+                <!-- เปลี่ยนรูปได้: เอารูปไปไว้ wwwroot/images/hero-med.png -->
+                <img src="/images/hero-med.png" alt="Hero product" />
+            </div> *@
+        </div>
+    </section>
+
+    <!-- PROMO STRIP -->
+    @* <section class="promo" id="about">
+        <div class="container-xl promo-inner">
+            <div>
+                <div class="promo-title">BEST OFFER MEDISHAPE</div>
+                <div class="promo-text">
+                    เน้นงานสายแพทย์: รูปชัด, รายละเอียดครบ, ดาวน์โหลดเอกสาร (IFU/Certificate) ได้ง่าย
+                </div>
+            </div>
+            <a class="btn btn-light promo-btn" href="#contact">Request quotation</a>
+        </div>
+    </section> *@
+
+    <!-- PRODUCT CARDS -->
+    <section id="products" class="cards">
+    <div class="container-xl">
+
+        <div class="section-head">
+            <h2 class="section-title">Featured Categories</h2>
+            <div class="section-desc">
+                จัดหมวดให้ค้นหาง่าย และแสดงภาพใหญ่แบบสวยสะอาด
+            </div>
+        </div>
+
+        <!-- ROW 1 -->
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="cat-card">
+                    <div class="cat-img">
+                        <img src="/images/cat-1.jpg" alt="Consumables" />
+                    </div>
+                    <div class="cat-body">
+                        <div class="cat-title">Consumables</div>
+                        <div class="cat-text">
+                            Disposable medical supplies, sterile packs, single-use products.
+                        </div>
+                        <a class="cat-link" href="#contact">View details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="cat-card">
+                    <div class="cat-img">
+                        <img src="/images/cat-2.jpg" alt="Devices" />
+                    </div>
+                    <div class="cat-body">
+                        <div class="cat-title">Devices</div>
+                        <div class="cat-text">
+                            Medical devices, components, and specialized equipment.
+                        </div>
+                        <a class="cat-link" href="#contact">View details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="cat-card">
+                    <div class="cat-img">
+                        <img src="/images/cat-3.jpg" alt="Nutrition & Care" />
+                    </div>
+                    <div class="cat-body">
+                        <div class="cat-title">Nutrition / Care</div>
+                        <div class="cat-text">
+                            Clinical nutrition, patient care, and supportive medical products.
+                        </div>
+                        <a class="cat-link" href="#contact">View details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="row g-4 mt-2">
+            <div class="col-12 col-md-4">
+                <div class="cat-card">
+                    <div class="cat-img">
+                        <img src="/images/cat-4.jpg" alt="Surgical Instruments" />
+                    </div>
+                    <div class="cat-body">
+                        <div class="cat-title">Surgical Instruments</div>
+                        <div class="cat-text">
+                            Reusable and disposable surgical instruments.
+                        </div>
+                        <a class="cat-link" href="#contact">View details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="cat-card">
+                    <div class="cat-img">
+                        <img src="/images/cat-5.jpg" alt="Diagnostics" />
+                    </div>
+                    <div class="cat-body">
+                        <div class="cat-title">Diagnostics</div>
+                        <div class="cat-text">
+                            Diagnostic devices, monitoring systems, point-of-care solutions.
+                        </div>
+                        <a class="cat-link" href="#contact">View details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="cat-card">
+                    <div class="cat-img">
+                        <img src="/images/cat-6.jpg" alt="Hospital Furniture" />
+                    </div>
+                    <div class="cat-body">
+                        <div class="cat-title">Hospital Furniture</div>
+                        <div class="cat-text">
+                            Hospital beds, trolleys, and ward support equipment.
+                        </div>
+                        <a class="cat-link" href="#contact">View details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+    @* <!-- SERVICES -->
+    <section id="services" class="services">
+        <div class="container-xl">
+            <div class="services-head">
+                <h2 class="services-title">WHAT OUR SERVICES</h2>
+                <div class="services-desc">บริการที่เหมาะกับงานขายสินค้าแพทย์ / โรงพยาบาล</div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <div class="svc">
+                        <div class="svc-ico">🧾</div>
+                        <div class="svc-title">Spec & Document</div>
+                        <div class="svc-text">สเปคเป็นตาราง, แนบ IFU/Certificate, ดาวน์โหลดง่าย</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="svc">
+                        <div class="svc-ico">🖼️</div>
+                        <div class="svc-title">Image-first</div>
+                        <div class="svc-text">แกลเลอรีรูปใหญ่ + thumbnail ชัดเจน เหมาะกับงานแพทย์</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="svc">
+                        <div class="svc-ico">☎️</div>
+                        <div class="svc-title">Fast Contact</div>
+                        <div class="svc-text">ปุ่มขอข้อมูล / ใบเสนอราคา ติดทุกหน้าสำคัญ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="container-xl">
+            <div class="contact-box">
+                <div>
+                    <h3 class="contact-title">Request Information</h3>
+                    <div class="contact-desc">กรอกข้อมูล แล้วทีมงานจะติดต่อกลับ</div>
+                </div>
+
+                <form class="row g-3 mt-1">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Name</label>
+                        <input class="form-control" placeholder="Your name" />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Phone</label>
+                        <input class="form-control" placeholder="Phone number" />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" placeholder="Email" />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label">Product</label>
+                        <input class="form-control" placeholder="Product name / code" />
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="3" placeholder="Tell us what you need..."></textarea>
+                    </div>
+                    <div class="col-12 d-flex gap-2">
+                        <button type="button" class="btn btn-primary px-4">Submit</button>
+                        <a class="btn btn-outline-secondary px-4" href="#products">Back to products</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section> *@
+
+    <footer class="footer">
+    <div class="container-xl">
+
+        <div class="footer-top">
+
+            <!-- LEFT: BRAND -->
+            <div class="footer-brandblock">
+                <a class="footer-brand" href="#home">
+                    <span class="brand-dot"></span>
+                    <span class="footer-brand-text">CompanyName</span>
+                </a>
+
+                <p class="footer-desc">
+                    Showcase medical products with clear specs, documents, and fast support.
+                </p>
+
+                <div class="footer-badges">
+                    <span class="footer-pill">ISO</span>
+                    <span class="footer-pill">CE</span>
+                    <span class="footer-pill">Sterile</span>
+                </div>
+            </div>
+
+            <!-- CENTER: LINKS -->
+            <div class="footer-linksblock">
+                <div class="footer-title">Quick links</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+
+            <!-- RIGHT: LUX CONTACT CARD -->
+            <div class="footer-contactcard">
+                <div class="footer-card-title">Contact Sales</div>
+                @* <div class="footer-card-sub">
+                    เราตอบกลับไว พร้อมส่ง catalog / ใบเสนอราคา
+                </div> *@
+
+                <div class="footer-contactlist">
+                    <div class="footer-row">
+                        <span class="footer-ico">☎️</span>
+                        <a href="tel:+66900000000">+66 90 000 0000</a>
+                    </div>
+                    <div class="footer-row">
+                        <span class="footer-ico">✉️</span>
+                        <a href="mailto:sales@company.com">sales@company.com</a>
+                    </div>
+                    <div class="footer-row">
+                        <span class="footer-ico">📍</span>
+                        <span>Samut Sakhon, Thailand</span>
+                    </div>
+                </div>
+
+                @* <div class="footer-actions">
+                    <a class="btn footer-btn-primary" href="#contact">Request quotation</a>
+                    <a class="btn footer-btn-ghost" href="#products">Browse</a>
+                </div>
+
+                <div class="footer-micro">
+                    หรือทิ้งข้อความไว้ด้านบน ระบบจะให้ทีมงานติดต่อกลับ
+                </div> *@
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div>© @DateTime.Now.Year CompanyName. All rights reserved.</div>
+            <div class="footer-mini">
+                <a href="#home">Back to top ↑</a>
+                <span class="footer-sep">•</span>
+                <a href="#contact">Support</a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+
+
+</div>
