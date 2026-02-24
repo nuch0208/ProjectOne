@@ -1,0 +1,61 @@
+@page "/admin/catalog"
+@layout ProjectOne.Components.Layout.MinimalLayout
+@rendermode InteractiveServer
+@inject NavigationManager Nav
+
+<div class="landing">
+
+
+    <section class="admin-menu-wrap">
+        <div class="container-xl">
+            <h2 class="admin-menu-title">View Admin Menu</h2>
+            <div class="admin-menu-subtitle">Click a button to open the screen.</div>
+
+            <div class="admin-menu-grid">
+
+                <div class="admin-menu-card2">
+                    <div class="admin-menu-emoji">🗂️</div>
+                    <div class="admin-menu-label">CATEGORIES</div>
+                    <button type="button" class="admin-menu-btn" @onclick="GoCategories">
+                        READ MORE
+                    </button>
+                </div>
+
+                <div class="admin-menu-card2">
+                    <div class="admin-menu-emoji">📦</div>
+                    <div class="admin-menu-label">PRODUCTS</div>
+                    <button type="button" class="admin-menu-btn" @onclick="GoProducts">
+                        READ MORE
+                    </button>
+                </div>
+
+                <div class="admin-menu-card2">
+                    <div class="admin-menu-emoji">🖼️</div>
+                    <div class="admin-menu-label">IMAGES</div>
+                    <button type="button" class="admin-menu-btn" @onclick="GoProducts">
+                        READ MORE
+                    </button>
+                </div>
+
+                <div class="admin-menu-card2">
+                    <div class="admin-menu-emoji">⚙️</div>
+                    <div class="admin-menu-label">SETTINGS</div>
+                    <button type="button" class="admin-menu-btn" @onclick="GoCategories">
+                        READ MORE
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="admin-menu-note">
+                Green/Teal theme only • No images • Same layout as sample
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@code {
+    private void GoCategories() => Nav.NavigateTo("/admin/catalog/categories");
+    private void GoProducts() => Nav.NavigateTo("/admin/catalog/products");
+}

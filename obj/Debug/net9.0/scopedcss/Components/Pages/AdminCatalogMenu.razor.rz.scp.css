@@ -1,0 +1,124 @@
+/* AdminCatalogMenu.razor.css (CSS isolation) */
+
+/* ✅ ทำให้ตัวแปรสีเป็น global จริง */
+:global(:root)[b-e7jmwrew09]{
+    --blue-900:#0b2b3a;
+    --blue-800:#0f3d52;
+    --blue-600:#1e88a8;
+  
+    --green-600:#2bb673;
+    --green-500:#31c27c;
+  
+    --bg:#0b2b3a;
+    --card:#ffffff;
+    --muted:rgba(255,255,255,.75);
+  }
+  
+
+  
+  /* ===== Admin Menu layout like sample (NO IMAGE) ===== */
+  .admin-menu-wrap[b-e7jmwrew09]{
+    padding: 40px 0 64px;
+  }
+  
+  .admin-menu-title[b-e7jmwrew09]{
+    text-align:center;
+    font-weight: 900;
+    letter-spacing: .02em;
+    margin: 0;
+  }
+  
+  .admin-menu-subtitle[b-e7jmwrew09]{
+    text-align:center;
+    color: rgba(255,255,255,.75);
+    margin-top: 8px;
+  }
+  
+  /* grid 4 cards */
+  .admin-menu-grid[b-e7jmwrew09]{
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+  }
+  
+  @media (max-width: 992px){
+    .admin-menu-grid[b-e7jmwrew09]{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 576px){
+    .admin-menu-grid[b-e7jmwrew09]{ grid-template-columns: 1fr; }
+  }
+  
+  /* card look */
+  .admin-menu-card2[b-e7jmwrew09]{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 22px;
+    padding: 22px;
+    text-align:center;
+    box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    backdrop-filter: blur(10px);
+    transition: transform .15s ease, filter .15s ease, border-color .15s ease;
+  }
+  
+  .admin-menu-card2:hover[b-e7jmwrew09]{
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+    border-color: rgba(255,255,255,.18);
+  }
+  
+  .admin-menu-emoji[b-e7jmwrew09]{
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    display:grid;
+    place-items:center;
+    margin: 0 auto 12px;
+    font-size: 26px;
+    background: linear-gradient(135deg, rgba(30,136,168,.30), rgba(49,194,124,.22));
+    border: 1px solid rgba(255,255,255,.16);
+  }
+  
+  .admin-menu-label[b-e7jmwrew09]{
+    font-weight: 900;
+    letter-spacing: .14em;
+    font-size: .9rem;
+    color: rgba(255,255,255,.92);
+  }
+  
+  /* ✅ ปุ่มเขียว/teal แน่นอน (มี fallback) */
+  .admin-menu-btn[b-e7jmwrew09]{
+    margin-top: 14px;
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 900;
+    letter-spacing: .06em;
+    color: #fff;
+    background: linear-gradient(135deg,
+      var(--blue-600, #1e88a8),
+      var(--green-500, #31c27c)
+    );
+    box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    transition: transform .12s ease, filter .12s ease;
+  }
+  
+  .admin-menu-btn:hover[b-e7jmwrew09]{
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+  
+  .admin-menu-note[b-e7jmwrew09]{
+    margin-top: 16px;
+    text-align:center;
+    color: rgba(255,255,255,.70);
+    font-size: 13px;
+  }
+
+  .landing[b-e7jmwrew09]{
+    /* ตั้งสีพื้นหลังของหน้า ผ่านตัวแปรให้ Layout ใช้ */
+    --page-bg: linear-gradient(180deg,#0b2b3a 0%, #0f3d52 60%, #0b2b3a 100%);
+    color: #fff;
+    min-height: 100vh;
+  }
+  

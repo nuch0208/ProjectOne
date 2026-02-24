@@ -1,9 +1,13 @@
 @page "/catalog/{CategoryId:int}"
 @using System.Net.Http.Json
+@using Blazored.LocalStorage
 @inherits LayoutComponentBase
 @layout ProjectOne.Components.Layout.MinimalLayout
 @rendermode InteractiveServer
 @inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+@inject ILocalStorageService LocalStorage
 
 <div class="landing">
 
@@ -12,14 +16,14 @@
         <div class="container-xl topnav-inner">
             <a class="brand" href="/product">
                 <span class="brand-dot"></span>
-                <span class="brand-text">CompanyNameOrLogo</span>
+                <span class="brand-text">CU Madical Co.,Ltd.</span>
             </a>
 
             <nav class="navlinks d-none d-md-flex">
                 <a href="/product#home">Home</a>
-                <a href="/product#products">Featured</a>
-                <a href="/catalog" class="active">Catalog</a>
-                <a href="/product#contact">Contact</a>
+                <a href="/product#products">About</a>
+                <a href="/catalog" class="active">Product</a>
+                <a href="/product#contact">Contact us</a>
             </nav>
 
             <button class="btn btn-outline-light d-md-none ms-auto" type="button"
@@ -38,9 +42,17 @@
         <div class="offcanvas-body">
             <div class="d-grid gap-2">
                 <a class="btn btn-outline-light" href="/product#home" data-bs-dismiss="offcanvas">Home</a>
-                <a class="btn btn-outline-light" href="/product#products" data-bs-dismiss="offcanvas">Featured</a>
+                <a class="btn btn-outline-light" href="/product#products" data-bs-dismiss="offcanvas">About</a>
                 <a class="btn btn-outline-light" href="/catalog" data-bs-dismiss="offcanvas">Catalog</a>
-                <a class="btn btn-success" href="/product#contact" data-bs-dismiss="offcanvas">CONTACT</a>
+                <a class="btn btn-success" href="/product#contact" data-bs-dismiss="offcanvas">REQUEST INFO</a>
+
+                <!-- ✅ Admin login (mobile) -->
+                <button class="btn btn-outline-light"
+                        type="button"
+                        data-bs-dismiss="offcanvas"
+                        @onclick="OpenAdminLogin">
+                    Admin Login
+                </button>
             </div>
         </div>
     </div>
@@ -158,68 +170,130 @@
     </section>
 
     <!-- FOOTER (reuse theme) -->
-    <footer class="footer">
-        <div class="container-xl">
-            <div class="footer-top">
-                <div class="footer-brandblock">
-                    <a class="footer-brand" href="/product#home">
-                        <span class="brand-dot"></span>
-                        <span class="footer-brand-text">CompanyName</span>
-                    </a>
+    <footer class="f2-footer">
+    <div class="container-xl">
 
-                    <p class="footer-desc">
-                        Medical catalog with clear specs, documents, and fast support.
-                    </p>
+        <!-- TOP -->
+        <div class="f2-top">
 
-                    <div class="footer-badges">
-                        <span class="footer-pill">ISO</span>
-                        <span class="footer-pill">CE</span>
-                        <span class="footer-pill">Sterile</span>
-                    </div>
-                </div>
+        <!-- Col 1: Logo / About -->
+        <div class="f2-col">
+            <img class="f2-brandmark" src="/images/logo.png" alt="CU Madical Logo" />
 
-                <div class="footer-linksblock">
-                    <div class="footer-title">Quick links</div>
-                    <div class="footer-links">
-                        <a href="/product#home">Home</a>
-                        <a href="/product#products">Featured</a>
-                        <a href="/catalog">Catalog</a>
-                        <a href="/product#contact">Contact</a>
-                    </div>
-                </div>
+            <div class="f2-logo">CU Madical Co.,Ltd.</div>
 
-                <div class="footer-contactcard">
-                    <div class="footer-card-title">Contact Sales</div>
+            <p class="f2-desc">
+            Made in Thailand Medical Device Equipments Mouting and designs.
+            </p>
+        </div>
 
-                    <div class="footer-contactlist">
-                        <div class="footer-row">
-                            <span class="footer-ico">☎️</span>
-                            <a href="tel:+66900000000">+66 90 000 0000</a>
-                        </div>
-                        <div class="footer-row">
-                            <span class="footer-ico">✉️</span>
-                            <a href="mailto:sales@company.com">sales@company.com</a>
-                        </div>
-                        <div class="footer-row">
-                            <span class="footer-ico">📍</span>
-                            <span>Samut Sakhon, Thailand</span>
-                        </div>
-                    </div>
+        <!-- Col 2: Contact -->
+        <div class="f2-col">
+            <div class="f2-title">Contact</div>
+
+            <div class="f2-list">
+            <div class="f2-row">
+                <span class="f2-ico">📍</span>
+                <span>3/38 M10 Ladsawai, Lumlukka, Pathumthanee 12150</span>
+            </div>
+
+            <div class="f2-row">
+                <span class="f2-ico">☎️</span>
+                <a href="tel:+666979526414">+669-7952-6414</a>
+            </div>
+
+            <div class="f2-row">
+                <span class="f2-ico">✉️</span>
+                <div class="f2-stack">
+                <a href="mailto:cu.madical@hotmail.com">cu.madical@hotmail.com</a>
+                <a href="mailto:info@cumadical.com">info@cumadical.com</a>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <div>© @DateTime.Now.Year CompanyName. All rights reserved.</div>
-                <div class="footer-mini">
-                    <a href="/catalog">Back to categories ↑</a>
-                    <span class="footer-sep">•</span>
-                    <a href="/product#contact">Support</a>
-                </div>
+            <div class="f2-row">
+                <span class="f2-ico">🧾</span>
+                <span>Tax ID: 0135552007025</span>
+            </div>
             </div>
         </div>
+
+        <!-- Col 3: Follow us -->
+        <div class="f2-col">
+            <div class="f2-title">Follow us</div>
+
+            <div class="f2-social">
+            <a class="f2-socialbtn" href="#" aria-label="Facebook">f</a>
+            <a class="f2-socialbtn" href="#" aria-label="Twitter">t</a>
+            <a class="f2-socialbtn" href="#" aria-label="Google">g</a>
+            </div>
+
+            <div class="f2-mini">
+            <div>💬 Line: <strong>chater8</strong></div>
+            <div>💚 WeChat: <strong>chater5</strong></div>
+            </div>
+        </div>
+
+        </div><!-- /.f2-top -->
+    </div><!-- /.container-xl -->
+
+    <!-- BOTTOM BAR -->
+    <div class="f2-bottom">
+        <div class="container-xl f2-bottom-inner">
+        <div class="f2-copy">© @DateTime.Now.Year CU Madical Co.,Ltd.</div>
+
+        <div class="f2-nav">
+            <a href="/product#home">Top</a>
+            <button type="button"
+                    class="f2-navlink-btn"
+                    @onclick="OpenAdminLogin">
+            Admin
+            </button>
+        </div>
+        </div>
+    </div>
+
     </footer>
 
+
 </div>
+
+@if (showAdminModal)
+{
+    <div class="blz-modal-backdrop" @onclick="CloseAdminLogin"></div>
+
+    <div class="blz-modal" role="dialog" aria-modal="true">
+        <div class="blz-modal-card">
+            <div class="blz-modal-header">
+                <div class="blz-modal-title">Admin Login</div>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="CloseAdminLogin" disabled="@loginLoading">✕</button>
+            </div>
+
+            <div class="blz-modal-body">
+                @if (!string.IsNullOrWhiteSpace(loginError))
+                {
+                    <div class="alert alert-danger">@loginError</div>
+                }
+
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input class="form-control" @bind="loginUsername" @bind:event="oninput" disabled="@loginLoading" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Password</label>
+                    <input class="form-control" type="password" @bind="loginPassword" @bind:event="oninput" disabled="@loginLoading" />
+                </div>
+            </div>
+
+            <div class="blz-modal-footer">
+                <button class="btn btn-outline-secondary" @onclick="CloseAdminLogin" disabled="@loginLoading">Cancel</button>
+                <button class="btn btn-success" @onclick="DoAdminLoginAsync" disabled="@loginLoading">
+                    @(loginLoading ? "Signing in..." : "Sign in")
+                </button>
+            </div>
+        </div>
+    </div>
+}
 
 @code {
     [Parameter] public int CategoryId { get; set; }
@@ -231,6 +305,15 @@
 
     private CategoryVm? category;
     private readonly List<ProductVm> products = new();
+
+    // ---------- Admin login modal state ----------
+    private bool showAdminModal;          // ✅ เพิ่มบรรทัดนี้
+    private string loginUsername = "";
+    private string loginPassword = "";
+    private bool loginLoading;
+    private string? loginError;
+
+    private string adminTargetUrl = "/admin";
 
     protected override async Task OnParametersSetAsync()
     {
@@ -290,6 +373,70 @@
         return "/images/product-placeholder.jpg";
     }
 
+    // ---------- Admin login handlers (NO JS) ----------
+    private void OpenAdminLogin()
+    {
+        loginError = null;
+        loginUsername = "";
+        loginPassword = "";
+        showAdminModal = true;
+    }
+
+     private void CloseAdminLogin()
+    {
+        if (loginLoading) return;
+        showAdminModal = false;
+    }
+
+    private async Task DoAdminLoginAsync()
+    {
+        loginLoading = true;
+        loginError = null;
+
+        try
+        {
+            var client = CreateClient();
+
+            var resp = await client.PostAsJsonAsync("api/auth/login", new LoginRequestDto
+            {
+                Username = loginUsername,
+                Password = loginPassword
+            });
+
+            if (!resp.IsSuccessStatusCode)
+            {
+                loginError = resp.StatusCode == System.Net.HttpStatusCode.Unauthorized
+                    ? "Invalid username or password."
+                    : $"Login failed: {(int)resp.StatusCode} {resp.ReasonPhrase}";
+                return;
+            }
+
+            var data = await resp.Content.ReadFromJsonAsync<LoginResponseDto>();
+            if (data is null || string.IsNullOrWhiteSpace(data.Token))
+            {
+                loginError = "Login failed: empty token.";
+                return;
+            }
+
+            await LocalStorage.SetItemAsync("auth_token", data.Token);
+            await LocalStorage.SetItemAsync("auth_role", data.Role);
+            await LocalStorage.SetItemAsync("auth_username", data.Username);
+
+            showAdminModal = false; // ✅ ปิด modal แบบ Blazor
+            Nav.NavigateTo(adminTargetUrl);
+        }
+        catch (Exception ex)
+        {
+            loginError = ex.Message;
+        }
+        finally
+        {
+            loginLoading = false;
+        }
+    }
+
+
+
     private sealed class CategoryVm
     {
         public int Id { get; set; }
@@ -315,4 +462,18 @@
         public string? CoverBase64 { get; set; }
         public string? CoverContentType { get; set; }
     }
+
+    private sealed class LoginRequestDto
+    {
+        public string Username { get; set; } = "";
+        public string Password { get; set; } = "";
+    }
+
+    private sealed class LoginResponseDto
+    {
+        public string Token { get; set; } = "";
+        public string Username { get; set; } = "";
+        public string Role { get; set; } = "";
+    }
+
 }

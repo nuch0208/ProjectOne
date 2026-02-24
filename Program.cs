@@ -1,5 +1,6 @@
 using ProjectOne.Components;
 using Microsoft.AspNetCore.Components.Server.Circuits;
+using Blazored.LocalStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,9 @@ builder.Services.AddServerSideBlazor()
         o.ClientTimeoutInterval = TimeSpan.FromMinutes(5);
         o.KeepAliveInterval = TimeSpan.FromSeconds(15);
     });
+
+builder.Services.AddBlazoredLocalStorage();
+
 
 var app = builder.Build();
 

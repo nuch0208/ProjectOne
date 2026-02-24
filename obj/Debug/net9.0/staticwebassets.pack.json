@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ProjectOne.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ProjectOne.pujjmo1udd.bundle.scp.css"
+      "PackagePath": "staticwebassets\\ProjectOne.8a01q12q6o.bundle.scp.css"
     },
     {
       "Id": "D:\\ProjectOne\\wwwroot\\app.css",
@@ -39,6 +39,10 @@
     {
       "Id": "D:\\ProjectOne\\wwwroot\\images\\hero-bg.jpg",
       "PackagePath": "staticwebassets\\images\\hero-bg.jpg"
+    },
+    {
+      "Id": "D:\\ProjectOne\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
       "Id": "D:\\ProjectOne\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",

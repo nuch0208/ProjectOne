@@ -1,0 +1,213 @@
+
+/* ===========================
+   Admin page theme (Green/Teal)
+   =========================== */
+:root[b-awiz6t430l]{
+  --brand-start:#1f8a8c;
+  --brand-end:#2fb07a;
+  --brand-deep:#0f6e70;
+
+  --bg-main:#f4fbf9;
+  --text-dark:#0f2f2f;
+  --text-muted:#5f7d7d;
+
+  --card-bg:#ffffff;
+  --card-border: rgba(15,47,47,.10);
+
+  --shadow: 0 14px 40px rgba(0,0,0,.10);
+  --shadow-soft: 0 10px 26px rgba(0,0,0,.08);
+  --radius-xl: 30px;
+
+}
+
+.admin-landing[b-awiz6t430l]{
+    min-height: 100vh;
+    color:#fff;
+  
+    /* ใช้พื้นเข้มแบบหน้าหลัก + glow เขียว/teal */
+    background:
+      radial-gradient(1200px 520px at 18% -10%, rgba(30,136,168,.28), transparent 60%),
+      radial-gradient(1000px 520px at 92% 0%,  rgba(49,194,124,.22), transparent 55%),
+      #0b2b3a !important;
+  }
+
+/* ===========================
+   Hero (เหมือนหน้าหลัก)
+   =========================== */
+.admin-hero[b-awiz6t430l]{
+  padding: 28px 0 22px;
+  background: linear-gradient(90deg, var(--brand-start), var(--brand-end));
+  color:#fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-hero[b-awiz6t430l]::after{
+  content:"";
+  position:absolute;
+  inset:-40px -120px auto auto;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 30% 30%,
+            rgba(255,255,255,.28),
+            rgba(255,255,255,0) 60%);
+  filter: blur(1px);
+  border-radius: 50%;
+  transform: rotate(18deg);
+}
+
+.admin-hero-badge[b-awiz6t430l]{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.22);
+  font-weight: 700;
+  letter-spacing: .12em;
+  font-size: .78rem;
+}
+
+.admin-hero-title[b-awiz6t430l]{
+  margin: 12px 0 6px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  font-size: clamp(2rem, 3.2vw, 3.1rem);
+  line-height: 1.05;
+}
+
+.admin-hero-subtitle[b-awiz6t430l]{
+  opacity: .92;
+  font-size: 1.05rem;
+  max-width: 56ch;
+}
+
+.admin-hero-tags[b-awiz6t430l]{
+  margin-top: 14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.admin-hero-tags span[b-awiz6t430l]{
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  font-weight: 600;
+  font-size: .88rem;
+}
+
+/* ===========================
+   Menu section
+   =========================== */
+.admin-menu-wrap[b-awiz6t430l]{
+  padding: 26px 0 46px;
+}
+
+.admin-menu-grid[b-awiz6t430l]{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.admin-menu-card2[b-awiz6t430l]{
+    grid-column: span 3;
+    position: relative;
+    overflow: hidden;
+  
+    border-radius: var(--radius-xl);
+  
+    /* ทำให้เห็นขอบโค้งชัดขึ้น */
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.10);
+  
+    /* เงาให้โค้งดู premium */
+    box-shadow:
+      0 18px 45px rgba(0,0,0,.28),
+      inset 0 1px 0 rgba(255,255,255,.16);
+  
+    padding: 18px 18px 16px;
+    backdrop-filter: blur(10px);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  
+  /* overlay ด้านบน (ต้องโค้งตามการ์ดจริง ๆ) */
+  .admin-menu-card2[b-awiz6t430l]::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    border-radius: inherit; /* ✅ สำคัญมาก */
+    background: linear-gradient(180deg,
+              rgba(47,176,122,.18) 0%,
+              rgba(31,138,140,.08) 42%,
+              rgba(255,255,255,0) 100%);
+    pointer-events:none;
+  }
+  
+  /* ทำให้ “ขอบโค้ง” เด่นขึ้นตอน hover */
+  .admin-menu-card2:hover[b-awiz6t430l]{
+    transform: translateY(-4px);
+    border-color: rgba(49,194,124,.45);
+    box-shadow:
+      0 22px 60px rgba(0,0,0,.36),
+      inset 0 1px 0 rgba(255,255,255,.18);
+  }
+
+.admin-menu-emoji[b-awiz6t430l]{
+  font-size: 2.1rem;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.admin-menu-label[b-awiz6t430l]{
+  font-weight: 900;
+  letter-spacing: .08em;
+  color: var(--text-dark);
+  font-size: .95rem;
+  margin-bottom: 12px;
+}
+
+.admin-menu-btn[b-awiz6t430l]{
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  color: #fff;
+  background: linear-gradient(90deg, var(--brand-start), var(--brand-end));
+  box-shadow: 0 10px 22px rgba(31,138,140,.22);
+  transition: transform .12s ease, filter .12s ease;
+  border-radius: 18px; /* หรือ 999px ถ้าอยากให้เป็น pill */
+}
+
+.admin-menu-btn:hover[b-awiz6t430l]{
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
+.admin-menu-btn:active[b-awiz6t430l]{
+  transform: translateY(0px);
+}
+
+.admin-menu-note[b-awiz6t430l]{
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: .95rem;
+  text-align: center;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 1200px){
+  .admin-menu-card2[b-awiz6t430l]{ grid-column: span 4; }
+}
+@media (max-width: 768px){
+  .admin-menu-card2[b-awiz6t430l]{ grid-column: span 6; }
+}
+@media (max-width: 520px){
+  .admin-menu-card2[b-awiz6t430l]{ grid-column: span 12; }
+}
