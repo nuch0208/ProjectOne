@@ -510,7 +510,8 @@
   }
   
   .modal-title{ font-weight: 900; color:#fff; }
-  .modal-sub{ margin-top: 4px; }
+  .modal-sub{ margin-top: 4px; color:#fff; }
+  .form-label{color:#fff; }
   
   .modal-body{
     padding: 16px;

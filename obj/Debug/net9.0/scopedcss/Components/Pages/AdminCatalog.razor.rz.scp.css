@@ -510,7 +510,8 @@
   }
   
   .modal-title[b-b6o6upp3iq]{ font-weight: 900; color:#fff; }
-  .modal-sub[b-b6o6upp3iq]{ margin-top: 4px; }
+  .modal-sub[b-b6o6upp3iq]{ margin-top: 4px; color:#fff; }
+  .form-label[b-b6o6upp3iq]{color:#fff; }
   
   .modal-body[b-b6o6upp3iq]{
     padding: 16px;

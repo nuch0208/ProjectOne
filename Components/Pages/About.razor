@@ -1,0 +1,198 @@
+@page "/about"
+@inherits LayoutComponentBase
+@layout ProjectOne.Components.Layout.MinimalLayout
+@rendermode InteractiveServer
+
+<PageTitle>About | CompanyNameOrLogo</PageTitle>
+
+<div class="landing about-surface">
+
+    <header class="topnav">
+        <div class="container-xl topnav-inner">
+            <a class="brand" href="/product">
+                <span class="brand-dot"></span>
+                <span class="brand-text">CompanyNameOrLogo</span>
+            </a>
+
+            <nav class="navlinks d-none d-md-flex">
+                <a href="/product#home">Home</a>
+                <a href="/catalog">Catalog</a>
+                <a href="/about" class="active">About</a>
+                <a href="/admin/catalog/categories">Admin</a>
+            </nav>
+
+            <button class="btn btn-outline-light d-md-none ms-auto" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="about-hero">
+        <div class="container-hero">
+            <div class="about-hero-inner">
+                <div class="about-copy">
+                    <div class="hero-kicker">ABOUT US</div>
+                    <h1 class="about-title">We build products that feel premium and simple.</h1>
+                    <p class="about-subtitle">
+                        CompanyNameOrLogo focuses on quality, usability, and a clean experience —
+                        from catalog to delivery and after-sales support.
+                    </p>
+
+                    <div class="about-badges">
+                        <span class="badge-pill">Quality first</span>
+                        <span class="badge-pill">Fast support</span>
+                        <span class="badge-pill">Secure platform</span>
+                    </div>
+
+                    <div class="about-actions">
+                        <a class="btn btn-light btn-min" href="/catalog">Browse Catalog</a>
+                        <a class="btn btn-outline-light btn-min" href="#contact">Contact</a>
+                    </div>
+                </div>
+
+                <div class="about-art">
+                    <div class="about-card">
+                        <div class="about-card-top">
+                            <div class="about-card-title">Our Mission</div>
+                            <div class="about-card-sub">
+                                Make healthcare & medical supply shopping clear, safe, and efficient.
+                            </div>
+                        </div>
+
+                        <div class="about-metrics">
+                            <div class="metric">
+                                <div class="metric-num">24/7</div>
+                                <div class="metric-label">Support</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-num">10+</div>
+                                <div class="metric-label">Categories</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-num">100+</div>
+                                <div class="metric-label">Products</div>
+                            </div>
+                        </div>
+
+                        <div class="about-card-foot">
+                            <div class="muted">Trusted by clinics and hospitals.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="about-section">
+        <div class="container-xl">
+            <div class="about-grid">
+                <div class="about-panel">
+                    <h2 class="about-h2">Who we are</h2>
+                    <p class="about-p">
+                        We are a small team focused on building a clean catalog experience:
+                        easy browsing, accurate info, and reliable media management for products and categories.
+                    </p>
+
+                    <div class="about-list">
+                        <div class="about-li">
+                            <div class="about-dot"></div>
+                            <div>
+                                <div class="about-li-title">Curated catalog</div>
+                                <div class="about-li-sub">Clear categories, consistent naming, and structured data.</div>
+                            </div>
+                        </div>
+
+                        <div class="about-li">
+                            <div class="about-dot"></div>
+                            <div>
+                                <div class="about-li-title">Media workflow</div>
+                                <div class="about-li-sub">Upload / manage images with roles (cover, gallery, etc.).</div>
+                            </div>
+                        </div>
+
+                        <div class="about-li">
+                            <div class="about-dot"></div>
+                            <div>
+                                <div class="about-li-title">Admin-friendly</div>
+                                <div class="about-li-sub">Fast CRUD with modals and validation.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-panel glass">
+                    <h2 class="about-h2">What we value</h2>
+
+                    <div class="value-grid">
+                        <div class="value-card">
+                            <div class="value-ico">✅</div>
+                            <div class="value-title">Accuracy</div>
+                            <div class="value-text">Descriptions and pricing are kept clear and up to date.</div>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-ico">⚡</div>
+                            <div class="value-title">Speed</div>
+                            <div class="value-text">Admin actions are quick: create, edit, upload, done.</div>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-ico">🔒</div>
+                            <div class="value-title">Security</div>
+                            <div class="value-text">Role-based access and safe upload limits.</div>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-ico">🎯</div>
+                            <div class="value-title">Simplicity</div>
+                            <div class="value-text">No clutter. Clean UI with consistent components.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div id="contact" class="about-contact">
+                <div class="contact-box">
+                    <h3 class="contact-title">Contact</h3>
+                    <div class="contact-desc">
+                        Want to partner or request a product? Reach out.
+                    </div>
+
+                    <div class="contact-actions">
+                        <a class="btn btn-light btn-min" href="mailto:contact@company.com">Email us</a>
+                        <a class="btn btn-outline-light btn-min" href="/catalog">Go to Catalog</a>
+                    </div>
+
+                    <div class="contact-meta">
+                        <div>📍 Samut Sakhon, Thailand</div>
+                        <div>☎️ 0xx-xxx-xxxx</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (reuse your existing footer style) -->
+    <footer class="footer">
+        <div class="container-xl">
+            <div class="footer-bottom">
+                <div class="footer-mini">
+                    <span>© @DateTime.Now.Year CompanyNameOrLogo</span>
+                    <span class="footer-sep">•</span>
+                    <a href="/about">About</a>
+                    <span class="footer-sep">•</span>
+                    <a href="/catalog">Catalog</a>
+                </div>
+                <div class="footer-mini">
+                    <span class="muted">Built with .NET + Blazor</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>

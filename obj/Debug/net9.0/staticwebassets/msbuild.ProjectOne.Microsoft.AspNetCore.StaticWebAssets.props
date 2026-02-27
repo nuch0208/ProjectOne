@@ -972,23 +972,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.min.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ProjectOne.8a01q12q6o.bundle.scp.css'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ProjectOne.fdjpqszwb9.bundle.scp.css'))">
       <SourceType>Package</SourceType>
       <SourceId>ProjectOne</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/ProjectOne</BasePath>
-      <RelativePath>ProjectOne.8a01q12q6o.bundle.scp.css</RelativePath>
+      <RelativePath>ProjectOne.fdjpqszwb9.bundle.scp.css</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>Reference</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ProjectBundle</AssetTraitValue>
-      <Fingerprint>8a01q12q6o</Fingerprint>
-      <Integrity>UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=</Integrity>
+      <Fingerprint>fdjpqszwb9</Fingerprint>
+      <Integrity>rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ProjectOne.8a01q12q6o.bundle.scp.css'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ProjectOne.fdjpqszwb9.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

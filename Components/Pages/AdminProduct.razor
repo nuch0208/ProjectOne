@@ -16,7 +16,7 @@
             </a>
 
             <nav class="navlinks d-none d-md-flex">
-                <a href="/product#home">Home</a>
+                <a href="/catalog">Home</a>
                 <a href="/catalog">Catalog</a>
                 <a href="/admin/catalog/categories">Admin</a>
                 <a href="/admin/catalog/products" class="active">Products</a>
@@ -187,7 +187,7 @@
                     <div class="col-6 d-flex align-items-end">
                         <label class="chk">
                             <input type="checkbox" @bind="form.IsActive" />
-                            <span>Active</span>
+                            <span class="form-label">Active</span>
                         </label>
                     </div>
                 </div>
@@ -228,9 +228,9 @@
                     <div class="col-12">
                         <label class="form-label">Role</label>
                         <select class="form-select input-min" @bind="uploadRole" disabled="@uploading">
-                            <option value="cover">cover</option>
+                            @* <option value="cover">cover</option> *@
                             <option value="gallery">gallery</option>
-                            <option value="thumbnail">thumbnail</option>
+                            @* <option value="thumbnail">thumbnail</option> *@
                         </select>
                     </div>
 
@@ -240,12 +240,12 @@
 
                         @if (uploadFiles.Count > 0)
                         {
-                            <div class="muted small mt-2">
+                            <div class="form-label muted small mt-2">
                                 Selected: @uploadFiles.Count file(s)
                                 <ul class="mt-2" style="max-height:140px; overflow:auto;">
                                     @foreach (var f in uploadFiles)
                                     {
-                                        <li>@f.Name (@(Math.Round(f.Size / 1024d)) KB)</li>
+                                        <li class="form-label">@f.Name (@(Math.Round(f.Size / 1024d)) KB)</li>
                                     }
                                 </ul>
                             </div>
@@ -282,6 +282,13 @@
                         }
                     </div>
 
+                    @if (!string.IsNullOrWhiteSpace(uploadSuccess))
+                    {
+                        <div class="col-12">
+                            <div class="alert alert-success mb-0">@uploadSuccess</div>
+                        </div>
+                    }
+
                     @if (!string.IsNullOrWhiteSpace(uploadError))
                     {
                         <div class="col-12">
@@ -308,14 +315,14 @@
     <div class="modal-min" role="dialog" aria-modal="true">
         <div class="modal-card">
             <div class="modal-head">
-                <div class="modal-title">Delete product</div>
+                <div class="form-label modal-title">Delete product</div>
                 <button class="btn btn-outline-light btn-sm btn-min" @onclick="CloseDelete">✕</button>
             </div>
 
             <div class="modal-body">
-                <div class="muted">Are you sure you want to delete:</div>
-                <div class="fw-semibold mt-1">@deleteTarget.Name</div>
-                <div class="muted small mt-2">This action cannot be undone.</div>
+                <div class="form-label muted">Are you sure you want to delete:</div>
+                <div class="form-label fw-semibold mt-1">@deleteTarget.Name</div>
+                <div class="form-label muted small mt-2">This action cannot be undone.</div>
 
                 @if (!string.IsNullOrWhiteSpace(deleteError))
                 {
@@ -361,10 +368,12 @@
     private bool uploading;
     private string? uploadError;
     private ProductVm? uploadTarget;
-    private string uploadRole = "cover";
+    private string uploadRole = "gallery";
 
     private readonly List<IBrowserFile> uploadFiles = new();
     private const int MaxImagesPerProduct = 10;
+
+    private string? uploadSuccess;
 
     protected override async Task OnInitializedAsync()
     {
@@ -630,7 +639,7 @@
     private void OpenUpload(ProductVm p)
     {
         uploadTarget = p;
-        uploadRole = "cover";
+        uploadRole = "gallery";
         uploadFiles.Clear();
         uploadError = null;
         uploadOpen = true;
@@ -643,6 +652,7 @@
         uploadTarget = null;
         uploadError = null;
         uploadFiles.Clear();
+        uploadSuccess = null;
     }
 
     private async Task OnFilesSelected(InputFileChangeEventArgs e)
@@ -696,7 +706,7 @@
 
                 form.Add(fileContent, "File", f.Name); // field "File" ตาม MediaUploadRequest
 
-                var res = await client.PostAsync("api/catalog/media", form);
+                var res = await client.PostAsync("api/catalog/mediaproduct", form);
                 if (!res.IsSuccessStatusCode)
                 {
                     uploadError = await res.Content.ReadAsStringAsync();
@@ -726,8 +736,9 @@
     {
         try
         {
-            uploading = true; // กันกดซ้ำ/ทำงานพร้อมกัน
+            uploading = true;
             uploadError = null;
+            uploadSuccess = null;
             StateHasChanged();
 
             var client = CreateClient();
@@ -740,6 +751,9 @@
 
             var m = await client.GetFromJsonAsync<List<MediaVm>>($"api/catalog/media/Product/{productId}") ?? new();
             mediaByProductId[productId] = m;
+
+            // ✅ แจ้งสำเร็จ
+            uploadSuccess = "Deleted image successfully.";
         }
         catch (Exception ex)
         {

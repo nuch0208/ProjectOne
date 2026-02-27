@@ -1,9 +1,18 @@
 @page "/admin"
 @layout ProjectOne.Components.Layout.MinimalLayout
 @rendermode InteractiveServer
+@using Blazored.LocalStorage
 @inject NavigationManager Nav
+@inject ILocalStorageService LocalStorage
 
-<div class="admin-landing">
+
+@if (!ready)
+{
+    <div class="container py-4">ไม่มีสิทธิ์ใช้งาน</div>
+}
+else
+{
+   <div class="admin-landing">
 
     <section class="admin-hero">
         <div class="container-xl">
@@ -65,10 +74,31 @@
     </section>
 
 </div>
-
-
+}
 
 @code {
+
     private void GoCategories() => Nav.NavigateTo("/admin/catalog/categories");
     private void GoProducts() => Nav.NavigateTo("/admin/catalog/products");
+    private bool ready;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+
+        var token = await LocalStorage.GetItemAsync<string>("auth_token");
+        var role = await LocalStorage.GetItemAsync<string>("auth_role");
+
+        var ok = !string.IsNullOrWhiteSpace(token) &&
+                 string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
+
+        if (!ok)
+        {
+            Nav.NavigateTo("/catalog?returnUrl=/admin", true);
+            return;
+        }
+
+        ready = true;
+        StateHasChanged();
+    }
 }

@@ -102,5 +102,6 @@ D:\ProjectOne\obj\Debug\net9.0\ProjectOne.pdb
 D:\ProjectOne\obj\Debug\net9.0\ProjectOne.genruntimeconfig.cache
 D:\ProjectOne\obj\Debug\net9.0\ref\ProjectOne.dll
 D:\ProjectOne\obj\Debug\net9.0\scopedcss\Components\Pages\Admin.razor.rz.scp.css
-D:\ProjectOne\obj\Debug\net9.0\compressed\xrc3lvwoh3-8a01q12q6o.gz
-D:\ProjectOne\obj\Debug\net9.0\compressed\iodrlcfkhm-8a01q12q6o.gz
+D:\ProjectOne\obj\Debug\net9.0\scopedcss\Components\Pages\About.razor.rz.scp.css
+D:\ProjectOne\obj\Debug\net9.0\compressed\xrc3lvwoh3-fdjpqszwb9.gz
+D:\ProjectOne\obj\Debug\net9.0\compressed\iodrlcfkhm-fdjpqszwb9.gz

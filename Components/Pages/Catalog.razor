@@ -3,11 +3,13 @@
 @using Blazored.LocalStorage
 @inherits LayoutComponentBase
 @layout ProjectOne.Components.Layout.MinimalLayout
+@using Microsoft.AspNetCore.Components.Authorization
 @rendermode InteractiveServer
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager Nav
 @inject IJSRuntime JS
 @inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProvider
 
 <div class="landing">
 
@@ -20,8 +22,8 @@
             </a>
 
             <nav class="navlinks d-none d-md-flex">
-                <a href="/product#home">Home</a>
-                <a href="/product#products">About</a>
+                <a href="/catalog">Home</a>
+                <a href="/About">About</a>
                 <a href="/catalog" class="active">Product</a>
                 <a href="/product#contact">Contact us</a>
             </nav>
@@ -418,6 +420,13 @@
             await LocalStorage.SetItemAsync("auth_token", data.Token);
             await LocalStorage.SetItemAsync("auth_role", data.Role);
             await LocalStorage.SetItemAsync("auth_username", data.Username);
+
+            // ✅ แจ้งระบบ auth ว่าล็อกอินแล้ว (สำคัญมาก)
+            if (AuthStateProvider is ProjectOne.Security.CustomAuthStateProvider cap)
+            {
+                cap.NotifyUserAuthentication(data.Username, data.Role);
+            }
+
 
             showAdminModal = false; // ✅ ปิด modal แบบ Blazor
             Nav.NavigateTo(adminTargetUrl);

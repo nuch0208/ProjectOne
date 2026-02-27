@@ -1,6 +1,10 @@
 using ProjectOne.Components;
 using Microsoft.AspNetCore.Components.Server.Circuits;
 using Blazored.LocalStorage;
+using ProjectOne.Security;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +33,9 @@ builder.Services.AddServerSideBlazor()
 
 builder.Services.AddBlazoredLocalStorage();
 
+// ✅ เพิ่ม auth
+builder.Services.AddAuthorizationCore();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 var app = builder.Build();
 

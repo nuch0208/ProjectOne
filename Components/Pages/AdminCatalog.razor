@@ -157,7 +157,7 @@
                     <div class="col-6 d-flex align-items-end">
                         <label class="chk">
                             <input type="checkbox" @bind="form.IsActive" />
-                            <span>Active</span>
+                            <span class="form-label">Active</span>
                         </label>
                     </div>
                 </div>
@@ -199,8 +199,8 @@
                         <label class="form-label">Role</label>
                         <select class="form-select input-min" @bind="uploadRole">
                             <option value="cover">cover</option>
-                            <option value="gallery">gallery</option>
-                            <option value="thumbnail">thumbnail</option>
+                            @* <option value="gallery">gallery</option>
+                            <option value="thumbnail">thumbnail</option> *@
                         </select>
                     </div>
 
@@ -244,9 +244,9 @@
             </div>
 
             <div class="modal-body">
-                <div class="muted">Are you sure you want to delete:</div>
-                <div class="fw-semibold mt-1">@deleteTarget.Name</div>
-                <div class="muted small mt-2">This action cannot be undone.</div>
+                <div class="form-label muted">Are you sure you want to delete:</div>
+                <div class="form-label fw-semibold mt-1">@deleteTarget.Name</div>
+                <div class="form-label muted small mt-2">This action cannot be undone.</div>
 
                 @if (!string.IsNullOrWhiteSpace(deleteError))
                 {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gwze3eK85+CLicG/ibmOyiO7MKEPd414dXS3H5AP8GM=",
+  "Hash": "BD9AIEr2fJar8odkebfzU3duuLWwiTOj9vSItHQbXo0=",
   "Source": "ProjectOne",
   "BasePath": "_content/ProjectOne",
   "Mode": "Default",
@@ -563,12 +563,12 @@
       "OriginalItemSpec": "D:\\ProjectOne\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-8a01q12q6o.gz",
+      "Identity": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-fdjpqszwb9.gz",
       "SourceId": "ProjectOne",
       "SourceType": "Computed",
       "ContentRoot": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/ProjectOne",
-      "RelativePath": "ProjectOne#[.{fingerprint=8a01q12q6o}]!.bundle.scp.css.gz",
+      "RelativePath": "ProjectOne#[.{fingerprint=fdjpqszwb9}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -577,8 +577,8 @@
       "RelatedAsset": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ProjectOne.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3amvbj8i20",
-      "Integrity": "i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=",
+      "Fingerprint": "jcxjsio8pn",
+      "Integrity": "k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ProjectOne.bundle.scp.css"
@@ -983,12 +983,12 @@
       "OriginalItemSpec": "D:\\ProjectOne\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-8a01q12q6o.gz",
+      "Identity": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-fdjpqszwb9.gz",
       "SourceId": "ProjectOne",
       "SourceType": "Computed",
       "ContentRoot": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/ProjectOne",
-      "RelativePath": "ProjectOne#[.{fingerprint=8a01q12q6o}]?.styles.css.gz",
+      "RelativePath": "ProjectOne#[.{fingerprint=fdjpqszwb9}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -997,8 +997,8 @@
       "RelatedAsset": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\bundle\\ProjectOne.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "3amvbj8i20",
-      "Integrity": "i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=",
+      "Fingerprint": "jcxjsio8pn",
+      "Integrity": "k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\bundle\\ProjectOne.styles.css"
@@ -1102,8 +1102,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "8a01q12q6o",
-      "Integrity": "UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=",
+      "Fingerprint": "fdjpqszwb9",
+      "Integrity": "rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\bundle\\ProjectOne.styles.css"
@@ -1123,8 +1123,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "8a01q12q6o",
-      "Integrity": "UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=",
+      "Fingerprint": "fdjpqszwb9",
+      "Integrity": "rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ProjectOne.bundle.scp.css"
@@ -16762,13 +16762,13 @@
       ]
     },
     {
-      "Route": "ProjectOne.8a01q12q6o.bundle.scp.css",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-8a01q12q6o.gz",
+      "Route": "ProjectOne.bundle.scp.css",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-fdjpqszwb9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000087596356"
+          "Quality": "0.000081846456"
         }
       ],
       "ResponseHeaders": [
@@ -16778,19 +16778,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11415"
+          "Value": "12217"
         },
         {
           "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -16806,26 +16806,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
+          "Value": "W/\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "8a01q12q6o"
-        },
-        {
-          "Name": "label",
-          "Value": "ProjectOne.bundle.scp.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
         }
       ]
     },
     {
-      "Route": "ProjectOne.8a01q12q6o.bundle.scp.css",
+      "Route": "ProjectOne.bundle.scp.css",
       "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ProjectOne.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -16835,7 +16827,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "100986"
+          "Value": "106137"
         },
         {
           "Name": "Content-Type",
@@ -16843,11 +16835,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
+          "Value": "\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
+        }
+      ]
+    },
+    {
+      "Route": "ProjectOne.bundle.scp.css.gz",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-fdjpqszwb9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12217"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI="
+        }
+      ]
+    },
+    {
+      "Route": "ProjectOne.fdjpqszwb9.bundle.scp.css",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-fdjpqszwb9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000081846456"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12217"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fdjpqszwb9"
+        },
+        {
+          "Name": "label",
+          "Value": "ProjectOne.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
+        }
+      ]
+    },
+    {
+      "Route": "ProjectOne.fdjpqszwb9.bundle.scp.css",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ProjectOne.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "106137"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16857,7 +16994,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8a01q12q6o"
+          "Value": "fdjpqszwb9"
         },
         {
           "Name": "label",
@@ -16865,13 +17002,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
         }
       ]
     },
     {
-      "Route": "ProjectOne.8a01q12q6o.bundle.scp.css.gz",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-8a01q12q6o.gz",
+      "Route": "ProjectOne.fdjpqszwb9.bundle.scp.css.gz",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-fdjpqszwb9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16880,7 +17017,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11415"
+          "Value": "12217"
         },
         {
           "Name": "Content-Type",
@@ -16888,11 +17025,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16910,7 +17047,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8a01q12q6o"
+          "Value": "fdjpqszwb9"
         },
         {
           "Name": "label",
@@ -16918,18 +17055,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8="
+          "Value": "sha256-k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI="
         }
       ]
     },
     {
-      "Route": "ProjectOne.8a01q12q6o.styles.css",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-8a01q12q6o.gz",
+      "Route": "ProjectOne.fdjpqszwb9.styles.css",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-fdjpqszwb9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000087596356"
+          "Quality": "0.000081846456"
         }
       ],
       "ResponseHeaders": [
@@ -16939,15 +17076,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11415"
+          "Value": "12217"
         },
         {
           "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16967,13 +17104,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
+          "Value": "W/\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8a01q12q6o"
+          "Value": "fdjpqszwb9"
         },
         {
           "Name": "label",
@@ -16981,12 +17118,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
         }
       ]
     },
     {
-      "Route": "ProjectOne.8a01q12q6o.styles.css",
+      "Route": "ProjectOne.fdjpqszwb9.styles.css",
       "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\bundle\\ProjectOne.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -16996,7 +17133,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "100986"
+          "Value": "106137"
         },
         {
           "Name": "Content-Type",
@@ -17004,11 +17141,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
+          "Value": "\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17018,7 +17155,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8a01q12q6o"
+          "Value": "fdjpqszwb9"
         },
         {
           "Name": "label",
@@ -17026,13 +17163,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
         }
       ]
     },
     {
-      "Route": "ProjectOne.8a01q12q6o.styles.css.gz",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-8a01q12q6o.gz",
+      "Route": "ProjectOne.fdjpqszwb9.styles.css.gz",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-fdjpqszwb9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17041,7 +17178,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11415"
+          "Value": "12217"
         },
         {
           "Name": "Content-Type",
@@ -17049,11 +17186,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17071,7 +17208,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8a01q12q6o"
+          "Value": "fdjpqszwb9"
         },
         {
           "Name": "label",
@@ -17079,155 +17216,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8="
-        }
-      ]
-    },
-    {
-      "Route": "ProjectOne.bundle.scp.css",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-8a01q12q6o.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000087596356"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "11415"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
-        }
-      ]
-    },
-    {
-      "Route": "ProjectOne.bundle.scp.css",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ProjectOne.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "100986"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
-        }
-      ]
-    },
-    {
-      "Route": "ProjectOne.bundle.scp.css.gz",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\iodrlcfkhm-8a01q12q6o.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "11415"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8="
+          "Value": "sha256-k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI="
         }
       ]
     },
     {
       "Route": "ProjectOne.styles.css",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-8a01q12q6o.gz",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-fdjpqszwb9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000087596356"
+          "Quality": "0.000081846456"
         }
       ],
       "ResponseHeaders": [
@@ -17237,15 +17237,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11415"
+          "Value": "12217"
         },
         {
           "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17265,13 +17265,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
+          "Value": "W/\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
         }
       ]
     },
@@ -17286,7 +17286,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "100986"
+          "Value": "106137"
         },
         {
           "Name": "Content-Type",
@@ -17294,11 +17294,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0=\""
+          "Value": "\"rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17308,13 +17308,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UKpTSH1yrmCrkr5EG0ZxP8imfNUpxEm7nYNydKdLGI0="
+          "Value": "sha256-rVdTjHeO9Um7eR4sljgY5Jtebc/bcXCwb8VnIeAgsMA="
         }
       ]
     },
     {
       "Route": "ProjectOne.styles.css.gz",
-      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-8a01q12q6o.gz",
+      "AssetFile": "D:\\ProjectOne\\obj\\Debug\\net9.0\\compressed\\xrc3lvwoh3-fdjpqszwb9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17323,7 +17323,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11415"
+          "Value": "12217"
         },
         {
           "Name": "Content-Type",
@@ -17331,11 +17331,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8=\""
+          "Value": "\"k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Feb 2026 03:12:50 GMT"
+          "Value": "Fri, 27 Feb 2026 04:49:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17353,7 +17353,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-i5ml5tAHdAQQ5G+1lbz/yrdak72BcDKXuf3WVFnliZ8="
+          "Value": "sha256-k9NrstTDCu1XU2IkqSudh29y9saLEDQYxs+21QfEwiI="
         }
       ]
     }
